@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Љубицина стаза</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <nav class="main-nav">
+        <div class="container nav-flex">
+            <div class="logo-wrapper">
+                <a href="/"><img src="/images/logo.png" alt="Logo" class="site-logo">
+                    <span class="site-title">Љубицина стаза</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Почетна</a></li>
+                <li><a href="/o-stazi/">О стази</a></li>
+                <li><a href="/o-ljubici/">O Љубици</a></li>
+                <li><a href="/flora/">Флора</a></li>
+                <li><a href="/fauna/">Фауна</a></li>
+                <li><a href="/vujan/">Вујан</a></li>
+                <li><a href="/galerija/">Галерија</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            {{ content | safe }}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>„Sve što smatramo da smo započeli nije početak, već nastavak jednog davnog procesa koji i dalje teče i nikada se ne završava.“</p>
+        </div>
+    </footer>
+</body>
+</html>
