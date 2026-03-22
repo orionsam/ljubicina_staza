@@ -152,6 +152,58 @@ footer {
         margin-bottom: 20px;
     }
 }
+
+@media (max-width: 768px) {
+    /* 1. Navigacija se lomi */
+    .nav-flex {
+        flex-direction: column; /* Logo iznad, linkovi ispod */
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap; /* Linkovi mogu u više redova ako ne stanu */
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .site-title {
+        font-size: 1.1rem; /* Smanjujemo naslov pored logoa da stane */
+    }
+
+    /* 2. Glavna sredina (home-grid) */
+    .home-grid {
+        flex-direction: column; /* Kolone idu jedna ispod druge */
+        gap: 30px;
+    }
+
+    .home-gallery {
+        width: 100%;
+        order: 2; /* Pomera galeriju ISPOD teksta na mobilnom (opciono) */
+        grid-template-columns: 1fr 1fr; /* Dve slike u redu, ili 1fr za jednu veliku */
+    }
+
+    .home-text {
+        width: 100%;
+        padding: 20px; /* Manji padding na mobilnom da ostane više mesta za tekst */
+        order: 1;
+    }
+
+    .home-gallery img {
+        height: 200px; /* Smanjujemo visinu slika da ne zauzmu ceo ekran */
+    }
+
+    /* 3. Flora stranica */
+    .flora-layout {
+        flex-direction: column;
+    }
+
+    .flora-aside {
+        position: static; /* Meni više nije fiksiran sa strane */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
 /* 10. FLORA PAGE LAYOUT */
 .flora-layout {
     display: flex;
