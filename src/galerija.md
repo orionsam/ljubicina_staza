@@ -1,0 +1,30 @@
+---
+layout: layout.njk
+title: Галерија слика
+---
+
+<div class="gallery-container">
+    <h1>Љубицина галерија слика</h1>
+    <p>Фотографије које су Љубици биле драге</p>
+
+    <div class="main-gallery-grid">
+        <a href="/images/galerija/slika1.jpeg" class="gallery-item">
+            <img src="/images/galerija/slika1.jpeg" alt="Pogled sa vrha Vujana">
+        </a>
+        <a href="/images/galerija/slika2.jpeg" class="gallery-item">
+            <img src="/images/galerija/slika2.jpeg" alt="Šumska staza u jesen">
+        </a>
+        <a href="/images/galerija/slika3.jpeg" class="gallery-item">
+            <img src="/images/galerija/slika3.jpeg" alt="Planinska flora">
+        </a>
+        <a href="/images/galerija/slika4.jpeg" class="gallery-item">
+            <img src="/images/galerija/slika4.jpeg" alt="Manastir Vujan">
+        </a>
+        <a href="/images/galerija/slika5.jpeg" class="gallery-item">
+            <img src="/images/galerija/slika5.jpeg" alt="Manastir Vujan">
+        </a>
+        <a href="/images/galerija/slika6.jpeg" class="gallery-item">
+            <img src="/images/galerija/slika6.jpeg" alt="Manastir Vujan">
+        </a>
+        </div>
+</div>

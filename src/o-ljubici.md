@@ -1,27 +1,26 @@
 ---
 layout: layout.njk
-title: О стази
+title: О Љубици
 ---
 
 <div class="flora-layout">
+
     <aside class="flora-aside">
         <nav class="sticky-side-nav">
             <h3>Каталог</h3>
             <ul>
-                <li><a href="#put">Како до стазе?</a></li>
-                <li><a href="#nastala">Како је настала</a></li>
-                <li><a href="#gradila">Како се градила</a></li>
-                <li><a href="#danas">Стаза данас</a></li>
-                <li><a href="#planovi">Планови</a></li>
+                <li><a href="#nastala">Биографија</a></li>
+                <li><a href="#nastala">Поруке</a></li>
+                <li><a href="#gradila">Пријатељи</a></li>
             </ul>
         </nav>
     </aside>
 
     <div class="flora-content">
-        <h1>О стази </h1>
-        <p> Рођена у глави непоправљивог заљубљеника у природу, реализована синергијом пријатеља. </p>
+        <h1>О Љубици </h1>
+        <p></p>
         <section id="nastala" class="plant-card">
-            <h2>Како је настала</h2>
+            <h2>Биографија</h2>
             <img src="/images/flora/suma_bukva.png" alt="suma">
             <p>Простор око стазе као и доминантна површина Вујна припада шумскопланинској вегетацији. Преовлађују букове, храстове и грабове шуме, док се спорадично јављају мешовите шуме са присуством јавора, липе и јасена. Најзаступљенији представник дендрофлоре је буква <i>Fagus sylvatica</i>, која доминира средишњим и горњим делом планине, храст китњак <i>Qurcus petarea</i> и цер <i>Qurcus cerris</i> уз пратњу граба <i>Carpinus betulus</i> су спорадично заступљени у нижем масиву планине.</p>
             <p>Поред поменутих дрвенастих вишегодишњих форми местимично се уочавају стабла липе <i>Tilia platyphyllos</i>, клена <i>Acer campestre</i>, горског јавора <i>Acer psudoplatanus</i>, багрема <i>Robinia pseudoacacia</i>, црног јасена <i>Fraxinus ornus</i>, јасике <i>Populus tremula</i>, дивље трешње <i>Prunus avium</i>... </p>
