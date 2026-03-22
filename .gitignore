@@ -8,6 +8,7 @@ Thumbs.db
 .sass-cache
 .env
 .cache
+.idea
 
 # Node modules and output
 node_modules
