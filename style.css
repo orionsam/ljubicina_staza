@@ -153,6 +153,30 @@ footer {
     }
 }
 
+/* UNIVERZALNI SISTEM ZA KOLONE */
+.flex-row {
+    display: flex;
+    gap: 40px;
+    align-items: center; /* Centrira sadržaj vertikalno */
+    margin-bottom: 60px;
+}
+
+.flex-col {
+    flex: 1; /* Obe kolone su jednake širine */
+}
+
+.flex-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Verzija gde tekst i slika menjaju mesta na mobilnom */
+.flex-row.reverse {
+    flex-direction: row-reverse;
+}
+
 @media (max-width: 768px) {
     /* 1. Navigacija se lomi */
     .nav-flex {
@@ -202,6 +226,14 @@ footer {
         position: static; /* Meni više nije fiksiran sa strane */
         width: 100%;
         margin-bottom: 20px;
+    }
+    .flex-row, .flex-row.reverse {
+        flex-direction: column; /* Sve ide jedno ispod drugog */
+        gap: 20px;
+    }
+
+    .flex-col {
+        width: 100%;
     }
 }
 /* 10. FLORA PAGE LAYOUT */
