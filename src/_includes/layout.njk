@@ -14,6 +14,7 @@
     <meta property="og:image" content="{{ sajt.url }}{{ og_slika if og_slika else sajt.slika }}">
     <meta property="og:url" content="{{ sajt.url }}{{ page.url }}">
     <meta name="twitter:card" content="summary_large_image">
+    {% if not sajt.vidljivoZaPretragu %}<meta name="robots" content="noindex, nofollow">{% endif %}
     {% if sajt.url %}<link rel="canonical" href="{{ sajt.url }}{{ page.url }}">{% endif %}
 
     <link rel="icon" href="/images/logo.png">

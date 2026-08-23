@@ -1,0 +1,9 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+{% if sajt.vidljivoZaPretragu %}Allow: /
+{% if sajt.url %}Sitemap: {{ sajt.url }}/sitemap.xml{% endif %}
+{% else %}Disallow: /
+{% endif %}
