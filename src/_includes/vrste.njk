@@ -1,0 +1,19 @@
+{# Kartice vrsta. Podaci dolaze iz src/_data/vrste.json - nova vrsta se dodaje
+   upisom u taj JSON, bez diranja HTML-a.
+
+   VAZNO: izlaz makroa mora da bude bez praznih redova. Stranice su .md fajlovi,
+   a markdown prazan red cita kao kraj HTML bloka i posle toga svaki <li> umota
+   u <p>, sto razbije mrezu. Zato svuda {%- -%} (kontrola praznog prostora). #}
+
+{%- macro kartica(v, sizes) -%}
+<figure class="vrsta{% if v.otrovna %} vrsta-otrovna{% endif %}"><img src="{{ v.slika }}" alt="{{ v.srpski }} ({{ v.latinski }})" sizes="{{ sizes if sizes else '(max-width: 600px) 45vw, (max-width: 900px) 30vw, 240px' }}"><figcaption><b>{{ v.srpski }}</b> <i>{{ v.latinski }}</i>{% if v.napomena %} <span class="vrsta-napomena">{{ v.napomena }}</span>{% endif %}</figcaption></figure>
+{%- endmacro -%}
+
+{%- macro mreza(lista, sizes) -%}
+<div class="vrste-mreza">{% for v in lista %}{{ kartica(v, sizes) }}{% endfor %}</div>
+{%- endmacro -%}
+
+{# Vrste bez fotografije - samo srpski i latinski naziv #}
+{%- macro spisak(lista) -%}
+<ul class="vrste-spisak">{% for v in lista %}<li><b>{{ v.srpski }}</b> <i>{{ v.latinski }}</i></li>{% endfor %}</ul>
+{%- endmacro -%}

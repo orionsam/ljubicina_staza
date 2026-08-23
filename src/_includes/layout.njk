@@ -1,35 +1,62 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="sr-Cyrl-RS">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | Љубицина стаза</title>
+    <title>{{ title }} | {{ sajt.naslov }}</title>
+
+    {% set stranicaOpis = opis if opis else sajt.opis %}
+    <meta name="description" content="{{ stranicaOpis }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ sajt.naslov }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ stranicaOpis }}">
+    <meta property="og:image" content="{{ sajt.url }}{{ og_slika if og_slika else sajt.slika }}">
+    <meta property="og:url" content="{{ sajt.url }}{{ page.url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    {% if sajt.url %}<link rel="canonical" href="{{ sajt.url }}{{ page.url }}">{% endif %}
+
+    <link rel="icon" href="/images/logo.png">
+    <link rel="apple-touch-icon" href="/images/logo.png">
+    <meta name="theme-color" content="#2d4130">
+
     <link rel="stylesheet" href="/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="bg-pattern"></div>
 
+    <a class="preskoci" href="#sadrzaj">Пређи на садржај</a>
+
     <nav class="main-nav">
         <div class="container nav-flex">
             <div class="logo-wrapper">
-                <a href="/"><img src="/images/logo.png" alt="Logo" class="site-logo">
-                    <span class="site-title">Љубицина стаза</span>
+                <a href="/" aria-label="{{ sajt.naslov }} — почетна">
+                    <img src="/images/logo.png" alt="" class="site-logo" loading="eager">
+                    {% svg "znak" %}
                 </a>
             </div>
+
+            {# Mobilni meni bez JavaScript-a: labela otvara i zatvara spisak #}
+            <input type="checkbox" id="meni-prekidac" class="meni-prekidac">
+            <label for="meni-prekidac" class="meni-dugme" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </label>
+
             <ul class="nav-links">
-                <li><a href="/">Почетна</a></li>
-                <li><a href="/o-stazi/">О стази</a></li>
-                <li><a href="/o-ljubici/">O Љубици</a></li>
-                <li><a href="/flora/">Флора</a></li>
-                <li><a href="/fauna/">Фауна</a></li>
-                <li><a href="/vujan/">Вујан</a></li>
-                <li><a href="/galerija/">Галерија</a></li>
+                {% for stavka in navigacija %}
+                <li>
+                    <a href="{{ stavka.link }}" class="{{ stavka.link | aktivno(page.url) }}"
+                       {% if stavka.link | aktivno(page.url) %}aria-current="page"{% endif %}>{{ stavka.naziv }}</a>
+                </li>
+                {% endfor %}
             </ul>
         </div>
     </nav>
 
-    <main>
+    <main id="sadrzaj">
         <div class="container">
             {{ content | safe }}
         </div>
@@ -37,7 +64,8 @@
 
     <footer>
         <div class="container">
-            <p>„Све што сматрамо да смо започели није почетак, већ наставак једног давног процеса који и даље тече и никада се не завршава.“</p>
+            <p class="footer-citat">„Све што сматрамо да смо започели није почетак, већ наставак једног давног процеса који и даље тече и никада се не завршава.“</p>
+            <p class="footer-info">Љубицина стаза · планина Вујан · село Луњевица</p>
         </div>
     </footer>
 </body>

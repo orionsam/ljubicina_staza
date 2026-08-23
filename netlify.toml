@@ -1,0 +1,13 @@
+# Netlify gradi sajt iz izvora - _site/ nije u gitu.
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Slike koje pravi eleventy-img imaju hes u imenu, pa mogu da se kesiraju zauvek.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

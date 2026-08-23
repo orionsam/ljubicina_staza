@@ -1,45 +1,52 @@
-/* 1. VARIJABLE */
+/* =========================================================================
+   Ljubicina staza
+   Redosled: promenljive -> osnova -> tipografija -> navigacija -> stranice
+   -> komponente -> media query-ji (svi na kraju, da ih raniji redovi ne gaze)
+   ========================================================================= */
+
+/* 1. PROMENLJIVE ------------------------------------------------------- */
 :root {
     --dark-green: #2d4130;
     --leaf-green: #8da676;
     --light-bg-green: #f0f4ec;
     --white: #ffffff;
+    --tekst: #1a261c;
+    --tekst-tih: #55635a;
+    --upozorenje: #8a3220;
+    --upozorenje-bg: #fbf0ed;
+    --senka: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
 }
 
-/* 2. RESET I STRUKTURA */
+/* 2. OSNOVA ------------------------------------------------------------ */
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-/* Glatko skrolovanje ka sekcijama */
+
 html {
     scroll-behavior: smooth;
+    /* Sidro (#suma, #gljive...) ne sme da zavrsi ispod ivice ekrana */
+    scroll-padding-top: 20px;
 }
+
+html, body { height: 100%; margin: 0; overflow-x: hidden; }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', system-ui, sans-serif;
     background-color: var(--light-bg-green);
-    color: #1a261c;
+    color: var(--tekst);
     position: relative;
 }
 
-/* 3. POZADINA */
-.bg-pattern {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    background-image: url('/images/godovi.svg');
-    background-size: cover;
-    opacity: 0.25;
-    pointer-events: none;
-}
+img { max-width: 100%; }
 
-/* 4. NAVIGACIJA I LOGO (FIKSIRANO PORAVNANJE) */
-.main-nav {
-    background-color: var(--dark-green);
-    padding: 10px 0;
-}
+/* eleventy-img umotava svaku sliku u <picture>. display:contents cini taj
+   omotac providnim za raspored, pa se <img> i dalje ponasa kao direktno
+   dete flex/grid roditelja - inace bi se sve mreze raspale. */
+picture { display: contents; }
+
+main { flex: 1; padding: 40px 0; }
 
 .container {
     width: 90%;
@@ -47,31 +54,109 @@ body {
     margin: 0 auto;
 }
 
+/* Link za preskakanje navigacije - vidi se tek kad se fokusira tastaturom */
+.preskoci {
+    position: absolute;
+    left: -9999px;
+    z-index: 10;
+    background: var(--dark-green);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 0 0 8px 0;
+}
+.preskoci:focus { left: 0; top: 0; }
+
+/* 3. TIPOGRAFIJA -------------------------------------------------------- */
+h1, h2, h3 {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 700;
+    color: var(--dark-green);
+    line-height: 1.25;
+}
+
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin-top: 0; }
+h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); }
+h3 { font-size: 1.1rem; font-weight: 600; }
+
+p { line-height: 1.7; }
+
+main a { color: #3c6b46; }
+main a:hover { color: var(--dark-green); }
+
+.quote {
+    font-style: italic;
+    border-left: 5px solid var(--leaf-green);
+    padding-left: 20px;
+    margin: 30px 0;
+    color: var(--tekst-tih);
+}
+
+/* 4. POZADINA ----------------------------------------------------------- */
+/* Izohipse sa sumskih tabli. Slika je maska (samo providnost), a boju daje
+   background-color - zato se ista datoteka moze obojiti kako god zatreba,
+   a fajl je 80 KB umesto 900 KB koliko bi bio isti crtez u boji.
+   U masku je upisano koliko je koji piksel taman, pa su i tanje, svetlije
+   linije - reci utkane medju izohipse - ostale vidljive. */
+.bg-pattern { display: none; }
+
+@supports (mask-image: url("/images/godovi.webp")) or (-webkit-mask-image: url("/images/godovi.webp")) {
+    .bg-pattern {
+        display: block;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        background-color: var(--leaf-green);
+        -webkit-mask-image: url('/images/godovi.webp');
+                mask-image: url('/images/godovi.webp');
+        -webkit-mask-size: cover;
+                mask-size: cover;
+        -webkit-mask-position: center;
+                mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+    }
+}
+
+/* 5. NAVIGACIJA --------------------------------------------------------- */
+.main-nav {
+    background-color: var(--dark-green);
+    padding: 10px 0;
+}
+
 .nav-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-/* Rešenje za logo i tekst jedno pored drugog */
 .logo-wrapper a {
     display: flex;
-    align-items: center; /* Centriranje po vertikali */
+    align-items: center;
     text-decoration: none;
-    gap: 15px; /* Razmak između slike i teksta */
+    gap: 15px;
 }
 
-.site-logo {
-    height: 100px;
+.site-logo { height: 100px; width: auto; }
+
+/* Znak "Ljubicina staza" - izvucen iz dizajna sumskih tabli (vektor).
+   Boje se zadaju promenljivama, pa isti znak radi i na tamnoj i na svetloj
+   podlozi. Na tamnozelenoj traci "STAZA" je bela, kao na tablama. */
+.znak {
+    height: 62px;
     width: auto;
+    display: block;
+    --znak-ime: #a8c08c;
+    --znak-staza: #ffffff;
+    --znak-srce: #2d4130;
 }
 
-.site-title {
-    color: var(--white);
-    font-family: 'Roboto Slab', serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    letter-spacing: 1px;
+/* Varijanta za svetlu podlogu - bela "STAZA" bi tu nestala */
+.znak-na-svetlom {
+    --znak-ime: #6f8a55;
+    --znak-staza: #2d4130;
+    --znak-srce: #2d4130;
 }
 
 .nav-links {
@@ -86,11 +171,22 @@ body {
     color: var(--white);
     text-decoration: none;
     font-weight: 600;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
 }
 
-/* 5. GLAVNI DEO */
-main { flex: 1; padding: 40px 0; }
+.nav-links a:hover { border-bottom-color: var(--leaf-green); }
 
+/* Gde se nalazis */
+.nav-links a.active {
+    color: #d8e6c8;
+    border-bottom-color: var(--leaf-green);
+}
+
+/* Dugme mobilnog menija - na sirokom ekranu ga nema */
+.meni-prekidac, .meni-dugme { display: none; }
+
+/* 6. POCETNA ------------------------------------------------------------ */
 .home-grid {
     display: flex;
     gap: 50px;
@@ -114,129 +210,12 @@ main { flex: 1; padding: 40px 0; }
 
 .home-text {
     flex: 2;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     padding: 40px;
-    border-radius: 12px;
+    border-radius: var(--radius);
 }
 
-/* 6. FUTER (VRAĆENA BOJA) */
-footer {
-    background-color: var(--dark-green); /* Tamno zelena kao na PDF-u */
-    color: var(--white);
-    padding: 40px 0;
-    text-align: center;
-}
-
-.quote {
-    font-style: italic;
-    border-left: 5px solid var(--leaf-green);
-    padding-left: 20px;
-    margin: 30px 0;
-}
-
-/* RESPONZIVNOST */
-@media (max-width: 900px) {
-    .home-grid { flex-direction: column; }
-    .site-title { font-size: 1.1rem; }
-}
-
-/* Responzivnost za Floru */
-@media (max-width: 800px) {
-    .flora-layout {
-        flex-direction: column;
-    }
-    .flora-aside {
-        position: relative;
-        top: 0;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
-
-/* UNIVERZALNI SISTEM ZA KOLONE */
-.flex-row {
-    display: flex;
-    gap: 40px;
-    align-items: center; /* Centrira sadržaj vertikalno */
-    margin-bottom: 60px;
-}
-
-.flex-col {
-    flex: 1; /* Obe kolone su jednake širine */
-}
-
-.flex-col img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-}
-
-/* Verzija gde tekst i slika menjaju mesta na mobilnom */
-.flex-row.reverse {
-    flex-direction: row-reverse;
-}
-
-@media (max-width: 768px) {
-    /* 1. Navigacija se lomi */
-    .nav-flex {
-        flex-direction: column; /* Logo iznad, linkovi ispod */
-        gap: 15px;
-        text-align: center;
-    }
-
-    .nav-links {
-        flex-wrap: wrap; /* Linkovi mogu u više redova ako ne stanu */
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .site-title {
-        font-size: 1.1rem; /* Smanjujemo naslov pored logoa da stane */
-    }
-
-    /* 2. Glavna sredina (home-grid) */
-    .home-grid {
-        flex-direction: column; /* Kolone idu jedna ispod druge */
-        gap: 30px;
-    }
-
-    .home-gallery {
-        width: 100%;
-        order: 2; /* Pomera galeriju ISPOD teksta na mobilnom (opciono) */
-        grid-template-columns: 1fr 1fr; /* Dve slike u redu, ili 1fr za jednu veliku */
-    }
-
-    .home-text {
-        width: 100%;
-        padding: 20px; /* Manji padding na mobilnom da ostane više mesta za tekst */
-        order: 1;
-    }
-
-    .home-gallery img {
-        height: 200px; /* Smanjujemo visinu slika da ne zauzmu ceo ekran */
-    }
-
-    /* 3. Flora stranica */
-    .flora-layout {
-        flex-direction: column;
-    }
-
-    .flora-aside {
-        position: static; /* Meni više nije fiksiran sa strane */
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .flex-row, .flex-row.reverse {
-        flex-direction: column; /* Sve ide jedno ispod drugog */
-        gap: 20px;
-    }
-
-    .flex-col {
-        width: 100%;
-    }
-}
-/* 10. FLORA PAGE LAYOUT */
+/* 7. STRANICE SA BOCNIM KATALOGOM --------------------------------------- */
 .flora-layout {
     display: flex;
     gap: 40px;
@@ -245,22 +224,28 @@ footer {
     margin: 0 auto;
 }
 
-/* Bočna navigacija */
 .flora-aside {
-    flex: 0.3; /* Zauzima oko 25% širine */
+    flex: 0 0 240px;
     position: sticky;
-    top: 100px; /* Razmak od vrha ekrana pri skrolovanju */
+    top: 20px;
 }
+
+.flora-content { flex: 1; }
+
+/* Sprecava da flex kolone odbiju da se skupe ispod sirine svoje dece */
+.flora-layout, .flex-row, .plant-hero,
+.flora-content, .flex-col, .hero-text, .hero-images { min-width: 0; }
 
 .sticky-side-nav {
     background: var(--dark-green);
-    color: white;
+    color: var(--white);
     padding: 20px;
     border-radius: 8px;
 }
 
 .sticky-side-nav h3 {
     font-size: 1.1rem;
+    color: var(--white);
     border-bottom: 1px solid var(--leaf-green);
     padding-bottom: 10px;
     margin-top: 0;
@@ -272,9 +257,7 @@ footer {
     margin: 15px 0 0 0;
 }
 
-.sticky-side-nav li {
-    margin-bottom: 12px;
-}
+.sticky-side-nav li { margin-bottom: 12px; }
 
 .sticky-side-nav a {
     color: var(--light-bg-green);
@@ -288,34 +271,168 @@ footer {
     padding-left: 5px;
 }
 
-/* Sadržaj biljaka */
-.flora-content {
-    flex: 1; /* Zauzima ostatak prostora */
-}
-
 .plant-card {
-    background: white;
+    background: var(--white);
     padding: 30px;
     margin-bottom: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: var(--radius);
+    box-shadow: var(--senka);
     border-top: 5px solid var(--leaf-green);
+    scroll-margin-top: 20px;
 }
 
-.plant-card img {
-    width: auto;
-    height: 300px;
+.plant-card h2 { margin-top: 0; }
+
+/* Vodeca slika sekcije: puna sirina kartice, ujednacena visina.
+   (Ranije width:auto + height:300px, pa su slike ispadale nasumicnih sirina.)
+   Mora i varijanta kroz <picture>: eleventy-img umota sliku, pa ">" sam po sebi
+   ne pogadja nista - display:contents menja raspored, ali ne i selektore. */
+.plant-card > img,
+.plant-card > picture > img {
+    width: 100%;
+    height: 320px;
     object-fit: cover;
     margin: 20px 0;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
-.plant-card h2 {
-    margin-top: 0;
-    color: var(--dark-green);
+/* Izresci sa providnom pozadinom - ne seci ih i ne razvlaci */
+.plant-card > img.ilustracija,
+.plant-card > picture > img.ilustracija {
+    width: auto;
+    max-width: 260px;
+    height: auto;
+    object-fit: contain;
+    float: right;
+    margin: 0 0 15px 25px;
 }
 
-/* GALERIJA STRANICA */
+/* Dve kolone (tekst + slika) */
+.flex-row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.flex-row.reverse { flex-direction: row-reverse; }
+
+.flex-col { flex: 1; }
+
+.flex-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Uvodni deo sekcije: tekst + istaknute slike */
+.plant-hero {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.hero-text { flex: 1.5; }
+
+.hero-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.hero-images p {
+    font-size: 0.9rem;
+    margin: 8px 0 0;
+    text-align: center;
+    color: var(--tekst-tih);
+}
+
+/* 8. KARTICE VRSTA ------------------------------------------------------ */
+.vrste-mreza {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.vrsta {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.vrsta img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid var(--leaf-green);
+    background: var(--light-bg-green);
+}
+
+.vrsta figcaption {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.vrsta figcaption b { display: block; }
+
+.vrsta figcaption i {
+    color: var(--tekst-tih);
+    font-size: 0.85rem;
+}
+
+.vrsta-napomena {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.78rem;
+    color: var(--tekst-tih);
+}
+
+/* Otrovne vrste ne smeju da izgledaju kao sve ostalo */
+.vrsta-otrovna img { border-color: var(--upozorenje); }
+
+.vrsta-otrovna figcaption b { color: var(--upozorenje); }
+
+.upozorenje {
+    background: var(--upozorenje-bg);
+    border-left: 5px solid var(--upozorenje);
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 25px 0;
+}
+
+/* Vrste bez fotografije */
+.vrste-spisak {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 8px 20px;
+}
+
+.vrste-spisak li {
+    border-bottom: 1px dotted var(--leaf-green);
+    padding: 6px 0;
+    font-size: 0.92rem;
+}
+
+.vrste-spisak i { color: var(--tekst-tih); }
+
+/* 9. GALERIJE ----------------------------------------------------------- */
 .gallery-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -334,13 +451,11 @@ footer {
     overflow: hidden;
     border-radius: 8px;
     border: 3px solid var(--leaf-green);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-.gallery-item:hover {
-    transform: scale(1.02);
-}
+.gallery-item:hover { transform: scale(1.02); }
 
 .gallery-item img {
     width: 100%;
@@ -349,71 +464,137 @@ footer {
     display: block;
 }
 
-/* Na mobilnom neka budu u dve kolone */
-@media (max-width: 600px) {
-    .main-gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-    .gallery-item img {
-        height: 150px;
-    }
-}
-/* Hero deo sekcije (Tekst + 2 slike) */
-.plant-hero {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 40px;
-    align-items: flex-start;
+/* Slike sa postavljanja staze */
+.staza-galerija {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
 }
 
-.hero-text { flex: 1.5; } /* Tekst dobija malo više mesta */
-.hero-images {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.featured-plant img {
+.staza-galerija img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
-/* GRID DEO (3x3) */
-.plant-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tačno 3 kolone */
-    gap: 20px;
-    border-top: 1px solid var(--leaf-green);
-    padding-top: 30px;
-}
-
-.grid-item img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 2px solid var(--leaf-green);
-}
-
-.grid-item p {
-    font-size: 0.9rem;
-    margin-top: 8px;
+/* 10. FUTER ------------------------------------------------------------- */
+footer {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 40px 0;
     text-align: center;
 }
 
-/* RESPONSIVE: Na mobilnom sve ide u jednu kolonu */
+.footer-citat {
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 15px;
+}
+
+.footer-info {
+    font-size: 0.85rem;
+    color: var(--leaf-green);
+    margin: 0;
+}
+
+/* =========================================================================
+   11. MEDIA QUERY-JI - svi na jednom mestu, od sireg ka uzem ekranu
+   ========================================================================= */
+
+@media (max-width: 900px) {
+    .flora-layout { flex-direction: column; gap: 25px; }
+
+    /* Katalog vise nije zalepljen sa strane */
+    .flora-aside {
+        position: static;
+        flex: none;
+        width: 100%;
+    }
+
+    .sticky-side-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+    }
+
+    .sticky-side-nav li { margin-bottom: 0; }
+
+    .home-grid { flex-direction: column; gap: 30px; }
+    .plant-hero { flex-direction: column; gap: 25px; }
+    .flex-row, .flex-row.reverse { flex-direction: column; gap: 20px; margin-bottom: 40px; }
+    .flex-col { width: 100%; }
+}
+
 @media (max-width: 768px) {
-    .plant-hero { flex-direction: column; }
-    .plant-grid { grid-template-columns: 1fr 1fr; } /* Dve slike na mobilnom su preglednije nego tri */
+    /* Navigacija se skuplja u dugme */
+    .nav-flex { position: relative; }
+
+    .site-logo { height: 64px; }
+    .znak { height: 40px; }
+
+    .meni-dugme {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        margin-left: auto;
+    }
+
+    .meni-dugme span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 5px 0;
+        background: var(--white);
+        border-radius: 2px;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+    }
+
+    .meni-prekidac:checked ~ .nav-links { display: flex; }
+
+    .nav-links li { border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+    .nav-links a {
+        display: block;
+        padding: 12px 4px;
+        border-bottom: none;
+    }
+
+    .nav-links a.active { border-left: 3px solid var(--leaf-green); padding-left: 10px; }
+
+    main { padding: 25px 0; }
+    .home-text { padding: 22px; }
+    .plant-card { padding: 20px; }
+    .plant-card > img,
+    .plant-card > picture > img { height: 220px; }
+
+    .plant-card > img.ilustracija,
+    .plant-card > picture > img.ilustracija {
+        float: none;
+        display: block;
+        margin: 0 auto 15px;
+        max-width: 200px;
+    }
+
+    .home-gallery { grid-template-columns: 1fr 1fr; order: 2; }
+    .home-gallery img { height: 200px; }
+    .home-text { order: 1; }
 }
 
-@media (max-width: 480px) {
-    .plant-grid { grid-template-columns: 1fr; } /* Na baš malim ekranima jedna */
+@media (max-width: 600px) {
+    .vrste-mreza { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .vrsta img { height: 130px; }
+    .main-gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .gallery-item img { height: 150px; }
+    .staza-galerija { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .staza-galerija img { height: 140px; }
+    .vrste-spisak { grid-template-columns: 1fr; }
 }
-
-
-

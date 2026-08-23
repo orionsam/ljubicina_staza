@@ -1,0 +1,613 @@
+{
+ "gljive": [
+  {
+   "slika": "/images/gljive/morchellla-esculenta.jpg",
+   "latinski": "Morchella esculenta",
+   "srpski": "Смрчак",
+   "grupa": "jestive",
+   "napomena": "рано пролеће"
+  },
+  {
+   "slika": "/images/gljive/cantharellus-cibarius.jpg",
+   "latinski": "Cantharellus cibarius",
+   "srpski": "Лисичарка",
+   "grupa": "jestive",
+   "napomena": "пролеће и лето, шумске прогале"
+  },
+  {
+   "slika": "/images/gljive/boletus-sp.jpg",
+   "latinski": "Boletus sp.",
+   "srpski": "Вргањ",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/amanita-caesarea-mlada.jpg",
+   "latinski": "Amanita caesarea",
+   "srpski": "Благва, млада",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/amanita-caesarea-razvijena.jpg",
+   "latinski": "Amanita caesarea",
+   "srpski": "Благва, потпуно развијена",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/lactarius-piperatus.jpg",
+   "latinski": "Lactarius piperatus",
+   "srpski": "Млечница",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/lactarius-volemus.jpg",
+   "latinski": "Lactarius volemus",
+   "srpski": "Преснац",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/russula-aurata.jpg",
+   "latinski": "Russula aurata",
+   "srpski": "Златна красница (зека)",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/russula-virescens.jpg",
+   "latinski": "Russula virescens",
+   "srpski": "Голубача",
+   "grupa": "jestive",
+   "napomena": "кишно и топло лето"
+  },
+  {
+   "slika": "/images/gljive/agaricus-campestre.jpg",
+   "latinski": "Agaricus campestre",
+   "srpski": "Рудњача",
+   "grupa": "jestive",
+   "napomena": "касно лето и јесен, по ливадама"
+  },
+  {
+   "slika": "/images/gljive/lactarius-deliciosus.jpg",
+   "latinski": "Lactarius deliciosus",
+   "srpski": "Рујница",
+   "grupa": "jestive",
+   "napomena": "касно лето и јесен"
+  },
+  {
+   "slika": "/images/gljive/macrolepiota-procera.jpg",
+   "latinski": "Macrolepiota procera",
+   "srpski": "Сунчаница",
+   "grupa": "jestive",
+   "napomena": "касно лето и јесен"
+  },
+  {
+   "slika": "/images/gljive/pleurotus-ostreatus.png",
+   "latinski": "Pleurotus ostreatus",
+   "srpski": "Буковача",
+   "grupa": "jestive",
+   "napomena": "јесен, на пањевима"
+  },
+  {
+   "slika": "/images/gljive/imleria-badia.png",
+   "latinski": "Imleria badia",
+   "srpski": "Костањевка",
+   "grupa": "jestive",
+   "napomena": "касно лето и јесен"
+  },
+  {
+   "slika": "/images/gljive/coprinus-comatus.jpg",
+   "latinski": "Coprinus comatus",
+   "srpski": "Ђубриштарка",
+   "grupa": "jestive",
+   "napomena": "касно лето и јесен"
+  },
+  {
+   "slika": "/images/gljive/ganoderma-lucidum.png",
+   "latinski": "Ganoderma lucidum",
+   "srpski": "Храстова сјајница",
+   "grupa": "lekovite",
+   "napomena": "на храстовим пањевима"
+  },
+  {
+   "slika": "/images/gljive/amanita-phaloides.png",
+   "latinski": "Amanita phaloides",
+   "srpski": "Зелена пупавка",
+   "grupa": "otrovne",
+   "napomena": "смртно отровна",
+   "otrovna": true
+  },
+  {
+   "slika": "/images/gljive/amanita-pantherina.png",
+   "latinski": "Amanita pantherina",
+   "srpski": "Пантеровка",
+   "grupa": "otrovne",
+   "napomena": "отровна",
+   "otrovna": true
+  },
+  {
+   "slika": "/images/gljive/amanita-verna.png",
+   "latinski": "Amanita verna",
+   "srpski": "Бела пупавка",
+   "grupa": "otrovne",
+   "napomena": "смртно отровна",
+   "otrovna": true
+  },
+  {
+   "slika": "/images/gljive/rubroboletus-satanas.png",
+   "latinski": "Rubroboletus satanas",
+   "srpski": "Лудара",
+   "grupa": "otrovne",
+   "napomena": "отровна",
+   "otrovna": true
+  }
+ ],
+ "vodozemci": [
+  {
+   "slika": "/images/vodozemci/salamandra-salamandra.jpg",
+   "latinski": "Salamandra salamandra",
+   "srpski": "Шарени даждевњак"
+  },
+  {
+   "slika": "/images/vodozemci/rana-dalmatina.jpg",
+   "latinski": "Rana dalmatina",
+   "srpski": "Шумска жаба"
+  },
+  {
+   "slika": "/images/vodozemci/pelophylax-ridibundus.png",
+   "latinski": "Pelophylax ridibundus",
+   "srpski": "Велика зелена жаба"
+  },
+  {
+   "slika": "/images/vodozemci/bufo-bufo.png",
+   "latinski": "Bufo bufo",
+   "srpski": "Обична крастача"
+  },
+  {
+   "slika": "/images/vodozemci/bombina-variegata.png",
+   "latinski": "Bombina variegata",
+   "srpski": "Жутотрби мукач"
+  },
+  {
+   "slika": "/images/vodozemci/hyla-arborea.jpg",
+   "latinski": "Hyla arborea",
+   "srpski": "Гаталинка"
+  }
+ ],
+ "gmizavci": [
+  {
+   "slika": "/images/gmizavci/lacerta-viridis.png",
+   "latinski": "Lacerta viridis",
+   "srpski": "Зелембаћ"
+  },
+  {
+   "slika": "/images/gmizavci/podarcis-muralis.png",
+   "latinski": "Podarcis muralis",
+   "srpski": "Зидни гуштер"
+  },
+  {
+   "slika": "/images/gmizavci/anguis-fragilis.png",
+   "latinski": "Anguis fragilis",
+   "srpski": "Слепић"
+  },
+  {
+   "slika": "/images/gmizavci/zamenis-longissimus.png",
+   "latinski": "Zamenis longissimus",
+   "srpski": "Ескулапов смук"
+  },
+  {
+   "slika": "/images/gmizavci/natrix-natrix.png",
+   "latinski": "Natrix natrix",
+   "srpski": "Белоушка"
+  },
+  {
+   "slika": "/images/gmizavci/corenella-austriaca.png",
+   "latinski": "Corenella austriaca",
+   "srpski": "Смукуља"
+  },
+  {
+   "slika": "/images/gmizavci/vipera-ammodytes.png",
+   "latinski": "Vipera ammodytes",
+   "srpski": "Женка поскока",
+   "otrovna": true
+  },
+  {
+   "slika": "/images/gmizavci/vipera-ammodytes.jpg",
+   "latinski": "Vipera ammodytes",
+   "srpski": "Мужјак поскока",
+   "otrovna": true
+  },
+  {
+   "slika": "/images/gmizavci/testudo-hermanni.png",
+   "latinski": "Testudo hermanni",
+   "srpski": "Шумска корњача"
+  }
+ ],
+ "ptice": [
+  {
+   "srpski": "Фазан",
+   "latinski": "Phasianus colchicus"
+  },
+  {
+   "srpski": "Сива врана",
+   "latinski": "Corvus cornix"
+  },
+  {
+   "srpski": "Голуб гривнаш",
+   "latinski": "Columba palumbus"
+  },
+  {
+   "srpski": "Сива сеница",
+   "latinski": "Poecile palustris"
+  },
+  {
+   "srpski": "Грлица",
+   "latinski": "Streptopelia turtur"
+  },
+  {
+   "srpski": "Плава сеница",
+   "latinski": "Cyanistes caeruleus"
+  },
+  {
+   "srpski": "Гугутка",
+   "latinski": "Streptopelia decaocto"
+  },
+  {
+   "srpski": "Велика сеница",
+   "latinski": "Parus major",
+   "slika": "/images/fauna/senica.jpg"
+  },
+  {
+   "srpski": "Обична кукавица",
+   "latinski": "Cuculus canorus"
+  },
+  {
+   "srpski": "Сеоска ласта",
+   "latinski": "Hirundo rustica"
+  },
+  {
+   "srpski": "Шумска сова",
+   "latinski": "Strix aluco"
+  },
+  {
+   "srpski": "Обични звиждак",
+   "latinski": "Phylloscopus collybita"
+  },
+  {
+   "srpski": "Буљина",
+   "latinski": "Bubo bubo"
+  },
+  {
+   "srpski": "Дугорепа сеница",
+   "latinski": "Aegithalos caudatus"
+  },
+  {
+   "srpski": "Кобац",
+   "latinski": "Accipiter nisus"
+  },
+  {
+   "srpski": "Црноглава грмуша",
+   "latinski": "Sylvia atricapilla"
+  },
+  {
+   "srpski": "Јастреб",
+   "latinski": "Accipiter gentilis"
+  },
+  {
+   "srpski": "Бргљез",
+   "latinski": "Sitta europaea"
+  },
+  {
+   "srpski": "Мишар",
+   "latinski": "Buteo buteo",
+   "slika": "/images/fauna/misar.jpg"
+  },
+  {
+   "srpski": "Царић",
+   "latinski": "Troglodytes troglodytes"
+  },
+  {
+   "srpski": "Пупавац",
+   "latinski": "Upupa epops"
+  },
+  {
+   "srpski": "Чворак",
+   "latinski": "Sturnus vulgaris"
+  },
+  {
+   "srpski": "Зелена жуна",
+   "latinski": "Picus viridis"
+  },
+  {
+   "srpski": "Дрозд певач",
+   "latinski": "Turdus philomelos"
+  },
+  {
+   "srpski": "Црна жуна",
+   "latinski": "Dryocopus martius"
+  },
+  {
+   "srpski": "Кос",
+   "latinski": "Turdus merula",
+   "slika": "/images/fauna/kos.jpg"
+  },
+  {
+   "srpski": "Средњи детлић",
+   "latinski": "Leiopicus medius"
+  },
+  {
+   "srpski": "Сива мухарица",
+   "latinski": "Muscicapa striata"
+  },
+  {
+   "srpski": "Мали детлић",
+   "latinski": "Dryobates minor"
+  },
+  {
+   "srpski": "Црвендаћ",
+   "latinski": "Erithacus rubecula"
+  },
+  {
+   "srpski": "Сеоски детлић",
+   "latinski": "Dendrocopos syriacus"
+  },
+  {
+   "srpski": "Мали славуј",
+   "latinski": "Luscinia megarhynchos"
+  },
+  {
+   "srpski": "Велики детлић",
+   "latinski": "Dendrocopos major",
+   "slika": "/images/fauna/detlic.jpg"
+  },
+  {
+   "srpski": "Врабац покућар",
+   "latinski": "Passer domesticus"
+  },
+  {
+   "srpski": "Ветрушка",
+   "latinski": "Falco tinnunculus"
+  },
+  {
+   "srpski": "Пољски врабац",
+   "latinski": "Passer montanus"
+  },
+  {
+   "srpski": "Вуга",
+   "latinski": "Oriolus oriolus"
+  },
+  {
+   "srpski": "Шумска трептељка",
+   "latinski": "Anthus trivialis"
+  },
+  {
+   "srpski": "Руси сврачак",
+   "latinski": "Lanius collurio"
+  },
+  {
+   "srpski": "Поточна плиска",
+   "latinski": "Motacilla cinerea"
+  },
+  {
+   "srpski": "Сојка",
+   "latinski": "Garrulus glandarius"
+  },
+  {
+   "srpski": "Зеба",
+   "latinski": "Fringilla coelebs"
+  },
+  {
+   "srpski": "Сврака",
+   "latinski": "Pica pica"
+  },
+  {
+   "srpski": "Батокљун",
+   "latinski": "Coccothraustes coccothraustes"
+  },
+  {
+   "srpski": "Гачац",
+   "latinski": "Corvus frugilegus"
+  },
+  {
+   "srpski": "Чешљугар",
+   "latinski": "Carduelis carduelis"
+  },
+  {
+   "srpski": "Гавран",
+   "latinski": "Corvus corax"
+  },
+  {
+   "srpski": "Црногрла стрнадица",
+   "latinski": "Emberiza cirlus"
+  }
+ ],
+ "sisari": [
+  {
+   "srpski": "Зец",
+   "latinski": "Lepus europaeus",
+   "pojas": "нижи предели"
+  },
+  {
+   "srpski": "Јазавац",
+   "latinski": "Meles meles",
+   "pojas": "виши предели"
+  },
+  {
+   "srpski": "Лисица",
+   "latinski": "Vulpes vulpes",
+   "pojas": "виши предели"
+  },
+  {
+   "srpski": "Куна",
+   "latinski": "Martes sp.",
+   "pojas": "виши предели"
+  },
+  {
+   "srpski": "Срна",
+   "latinski": "Capreolus capreolus",
+   "pojas": "виши предели"
+  },
+  {
+   "srpski": "Дивља свиња",
+   "latinski": "Sus scrofa",
+   "pojas": "виши предели"
+  }
+ ],
+ "lekovite": [
+  {
+   "slika": "/images/flora/nana.jpg",
+   "latinski": "Mentha spicata",
+   "srpski": "Класаста нана"
+  },
+  {
+   "slika": "/images/flora/maticnjak.jpg",
+   "latinski": "Melissa officinalis",
+   "srpski": "Матичњак"
+  },
+  {
+   "slika": "/images/flora/podubica.jpg",
+   "latinski": "Teucrium chamaedrys",
+   "srpski": "Подубица"
+  },
+  {
+   "slika": "/images/flora/gavez.jpg",
+   "latinski": "Symphytum officinale",
+   "srpski": "Гавез"
+  },
+  {
+   "slika": "/images/flora/kantarion.jpg",
+   "latinski": "Hypericum perforatum",
+   "srpski": "Кантарион"
+  },
+  {
+   "slika": "/images/flora/vratic.jpg",
+   "latinski": "Tanacetum vulgare",
+   "srpski": "Вратич"
+  },
+  {
+   "slika": "/images/flora/bokvica.jpg",
+   "latinski": "Plantago major",
+   "srpski": "Женска боквица"
+  },
+  {
+   "slika": "/images/flora/vodopija.jpg",
+   "latinski": "Cichorium intybus",
+   "srpski": "Водопија"
+  },
+  {
+   "slika": "/images/flora/metvica.jpg",
+   "latinski": "Mentha pulegium",
+   "srpski": "Метвица"
+  }
+ ],
+ "endemicne": [
+  {
+   "slika": "/images/flora/cvakija.jpg",
+   "latinski": "Halacsya sendtneri",
+   "srpski": "Цвакија"
+  },
+  {
+   "slika": "/images/flora/udovicica.jpg",
+   "latinski": "Scabiosa fumarioides",
+   "srpski": "Удовичица"
+  },
+  {
+   "slika": "/images/flora/pasjizub.jpg",
+   "latinski": "Erythronium dens-canis",
+   "srpski": "Пасји зуб"
+  },
+  {
+   "slika": "/images/flora/kiprovina.jpg",
+   "latinski": "Epilobium angustifolium",
+   "srpski": "Кипровина"
+  },
+  {
+   "slika": "/images/flora/pcelica.jpg",
+   "latinski": "Ophrys oestrifera",
+   "srpski": "Пчелица"
+  },
+  {
+   "slika": "/images/flora/surucica.jpg",
+   "latinski": "Spiraea media",
+   "srpski": "Дуголисна суручица"
+  },
+  {
+   "slika": "/images/flora/vimenjak.jpg",
+   "latinski": "Platanthera chlorantha",
+   "srpski": "Вимењак"
+  },
+  {
+   "slika": "/images/flora/jasenak.jpg",
+   "latinski": "Dictamnus albus",
+   "srpski": "Јасенак"
+  },
+  {
+   "slika": "/images/flora/raseljka.jpg",
+   "latinski": "Prunus mahaleb",
+   "srpski": "Рашељка"
+  },
+  {
+   "slika": "/images/flora/divokozjak.jpg",
+   "latinski": "Doronicum columnae",
+   "srpski": "Срцолики дивокозјак"
+  },
+  {
+   "slika": "/images/flora/cuperak.jpg",
+   "latinski": "Alyssum markgrafii",
+   "srpski": "Жути чуперак"
+  },
+  {
+   "slika": "/images/flora/zanovet.jpg",
+   "latinski": "Lembotropis nigricans",
+   "srpski": "Зановет"
+  },
+  {
+   "slika": "/images/flora/kosutica.jpg",
+   "latinski": "Fritillaria montana",
+   "srpski": "Планинска кошутица"
+  },
+  {
+   "slika": "/images/flora/treskavica.jpg",
+   "latinski": "Scleranthus perennis",
+   "srpski": "Вишегодишња трескавица"
+  },
+  {
+   "slika": "/images/flora/krkavina.png",
+   "latinski": "Rhamnus saxatilis",
+   "srpski": "Камењарска кркавина"
+  },
+  {
+   "slika": "/images/flora/seboj.jpg",
+   "latinski": "Erysimum linariifolium",
+   "srpski": "Ланолисни шебој"
+  },
+  {
+   "slika": "/images/flora/misjakinja.jpg",
+   "latinski": "Myosoton aquaticum",
+   "srpski": "Водена мишјакиња"
+  },
+  {
+   "slika": "/images/flora/pticjemleko.jpg",
+   "latinski": "Ornithogalum umbellatum",
+   "srpski": "Птичје млеко"
+  },
+  {
+   "slika": "/images/flora/cestoslavica.jpg",
+   "latinski": "Veronica jacquinii",
+   "srpski": "Жакијева честославица"
+  },
+  {
+   "slika": "/images/flora/vodnjaca.jpg",
+   "latinski": "Orobanche purpurea",
+   "srpski": "Љубичаста водњача"
+  },
+  {
+   "slika": "/images/flora/zevalica.jpg",
+   "latinski": "Scrophularia canina subsp. tristis",
+   "srpski": "Жалосна зевалица"
+  }
+ ]
+}

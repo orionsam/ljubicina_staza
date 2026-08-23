@@ -15,3 +15,5 @@ node_modules
 dist
 src/_includes/css
 _site/
+# Lokalna podesavanja alata, ne ticu se sajta
+.claude/
