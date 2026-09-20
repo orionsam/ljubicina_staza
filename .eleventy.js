@@ -38,6 +38,12 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("style.css");
     eleventyConfig.addPassthroughCopy("src/images");
 
+    // Leaflet se kopira iz node_modules u /vendor/leaflet/, umesto da se povlaci
+    // sa tudjeg CDN-a: verzija je zakljucana u package.json, u lancu ucitavanja
+    // nema jos jednog servera, i mapa se otvara i kad je veza pod Vujnom spora.
+    eleventyConfig.addPassthroughCopy({ "node_modules/leaflet/dist": "vendor/leaflet" });
+    eleventyConfig.addPassthroughCopy("src/js");
+
     // Izdvajanje vrsta iz src/_data/vrste.json po polju.
     // Nunjucks-ov selectattr ume samo da proveri da li polje postoji (ignorise
     // treci argument), pa filtriranje po vrednosti mora ovako:

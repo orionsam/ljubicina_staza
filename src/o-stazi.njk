@@ -2,6 +2,7 @@
 layout: layout.njk
 title: О стази
 opis: Како је настала Љубицина стаза, како се градила, како до ње доћи и какви су планови.
+mapa: true
 ---
 
 <div class="flora-layout">
@@ -10,6 +11,7 @@ opis: Како је настала Љубицина стаза, како се г
             <h3>Каталог</h3>
             <ul>
                 <li><a href="#put">Како до стазе?</a></li>
+                <li><a href="#mapa-staze">Мапа стазе</a></li>
                 <li><a href="#nastala">Како је настала?</a></li>
                 <li><a href="#gradila">Како се градила?</a></li>
                 <li><a href="#danas">Стаза данас</a></li>
@@ -21,11 +23,118 @@ opis: Како је настала Љубицина стаза, како се г
     <div class="flora-content">
         <h1>О стази </h1>
         <p> Рођена у глави непоправљивог заљубљеника у природу, реализована синергијом породице и пријатеља. </p>
+
+        {# ПРОВЕРИТИ ПРЕ ОБЈАВЕ: назив магистрале и тачно место путоказа.
+           Положај села и надморске висине су измерени, назив пута није. #}
         <section id="put" class="plant-card">
             <h2>Како до стазе?</h2>
-            <p>Почетак стазе се налази у подножју Вујна у селу Луњевица. Путоказ на магистрали усмерава право на почетак стазе.</p>
-            <p>На мапи се види почетак и цела траса стазе.</p>
+            <p>Стаза почиње у селу <strong>Луњевица</strong>, у општини Горњи Милановац,
+            око четири километра јужно од центра вароши. Долази се магистралним путем
+            Горњи Милановац—Чачак; путоказ на магистрали усмерава право на почетак стазе.</p>
+
+            <p>Почетак је у подножју Вујна, на {{ staza.pocetak.visina }} метара надморске висине.
+            Одатле стаза иде само узбрдо: до врха се савлада око {{ staza.visinskaRazlikaOkruglo }} метара
+            висинске разлике, па обујте обућу у којој вам је удобно да се пењете.</p>
+
+            <div class="pocetak-kartica">
+                <h3>Почетак стазе</h3>
+                <p class="koordinate">
+                    <span>{{ staza.pocetak.lat }}° С</span>
+                    <span>{{ staza.pocetak.lon }}° И</span>
+                </p>
+                <p class="pocetak-dugmad">
+                    <a class="dugme" target="_blank" rel="noopener"
+                       href="https://www.google.com/maps/dir/?api=1&amp;destination={{ staza.pocetak.lat }},{{ staza.pocetak.lon }}">Навигација до почетка</a>
+                    <a class="dugme sporedno" target="_blank" rel="noopener"
+                       href="https://www.openstreetmap.org/?mlat={{ staza.pocetak.lat }}&amp;mlon={{ staza.pocetak.lon }}#map=15/{{ staza.pocetak.lat }}/{{ staza.pocetak.lon }}">Отвори у OpenStreetMap-у</a>
+                </p>
+                <p class="sitno">Сигнал под Вујном уме да ослаби — вреди отворити навигацију још у вароши.</p>
+            </div>
         </section>
+
+        <section id="mapa-staze" class="plant-card">
+            <h2>Мапа стазе</h2>
+            <p>Стаза је обележена у {{ staza.brojTacaka }} тачака, од почетка у Луњевици до врха Вујна.
+            {% if staza.procena %}Линија на мапи спаја те тачке, па сече кривине — права траса је нешто дужа
+            и вијугавија него што овде изгледа.{% endif %}</p>
+
+            {# Текст унутар оквира се види док се мапа не учита, и остаје ако
+               JavaScript не ради. mapa.js га уклони пре него што исцрта мапу. #}
+            <div id="mapa" class="mapa-okvir" role="region"
+                 aria-label="Мапа Љубицине стазе од Луњевице до врха Вујна">
+                <p class="mapa-zamena">
+                    Мапа се учитава…
+                    <a href="https://www.google.com/maps/d/viewer?mid={{ staza.izvor.mid }}"
+                       target="_blank" rel="noopener">Отворите је у Google мапама</a>
+                    ако се не прикаже.
+                </p>
+            </div>
+            <p class="sitno mapa-uputstvo">Точком миша се зумира тек пошто кликнете на мапу; на телефону се мапа помера са два прста.</p>
+
+            <h3>Стаза у бројкама</h3>
+            <dl class="brojke">
+                <div>
+                    <dt>Дужина</dt>
+                    <dd>{% if staza.procena %}око {% endif %}{{ staza.duzinaKm }} км у једном смеру</dd>
+                </div>
+                <div>
+                    <dt>Повратно</dt>
+                    <dd>{% if staza.procena %}око {% endif %}{{ staza.duzinaPovratnoKm }} км</dd>
+                </div>
+                <div>
+                    <dt>Висинска разлика</dt>
+                    <dd>{{ staza.visinskaRazlikaOkruglo }} м</dd>
+                </div>
+                <div>
+                    <dt>Надморска висина</dt>
+                    <dd>од {{ staza.visinaMin }} до {{ staza.visinaMax }} м</dd>
+                </div>
+                <div>
+                    <dt>Просечан нагиб</dt>
+                    <dd>{{ staza.nagibProcenat }}%</dd>
+                </div>
+                <div>
+                    <dt>Хода се</dt>
+                    <dd>око {{ staza.vremeUzbrdo }} узбрдо, {{ staza.vremeNizbrdo }} назад</dd>
+                </div>
+            </dl>
+
+            <h3>Успон</h3>
+            {# Натписи су у HTML-у, а не у SVG-у: SVG се разлива преко целе ширине,
+               па би се слова у њему скупила до нечитљивости на телефону. #}
+            <div class="profil-okvir">
+                <div class="profil-ose" aria-hidden="true">
+                    {% for p in staza.profil.podeoci %}
+                    <span style="top: {{ p.odVrha }}%">{{ p.v }} м</span>
+                    {% endfor %}
+                </div>
+
+                <svg class="profil" viewBox="0 0 100 100" preserveAspectRatio="none"
+                     role="img"
+                     aria-label="Профил успона: стаза се са {{ staza.visinaMin }} метара у Луњевици равномерно пење до {{ staza.visinaMax }} метара на врху Вујна.">
+                    <title>Профил успона Љубицине стазе</title>
+                    {% for p in staza.profil.podeoci %}
+                    <line class="profil-mreza" x1="0" y1="{{ p.odVrha }}" x2="100" y2="{{ p.odVrha }}"
+                          vector-effect="non-scaling-stroke"></line>
+                    {% endfor %}
+                    <path class="profil-povrsina" d="{{ staza.profil.povrsina }}"></path>
+                    {# non-scaling-stroke: без тога би развлачење SVG-а истањило линију #}
+                    <polyline class="profil-linija" points="{{ staza.profil.linija }}"
+                              vector-effect="non-scaling-stroke"></polyline>
+                </svg>
+
+                <p class="profil-mesta">
+                    <span>Луњевица · {{ staza.visinaMin }} м</span>
+                    <span>Вујан · {{ staza.visinaMax }} м</span>
+                </p>
+            </div>
+
+            {% if staza.procena %}
+            <p class="sitno napomena">Дужине су израчунате из тачака обележених на мапи, а надморске висине
+            из модела терена, па су приближне. Биће замењене тачним вредностима када стаза буде снимљена у ходу.</p>
+            {% endif %}
+        </section>
+
         <section id="nastala" class="flex-row reverse plant-card">
             <div class="flex-col">
                 <img src="/images/flora/suma_bukva.png" alt="suma">
@@ -53,9 +162,21 @@ opis: Како је настала Љубицина стаза, како се г
         </section>
         <section id="planovi" class="plant-card">
             <h2>Планови</h2>
-                <p>Уколико Љубицина стаза заживи и настави да окупља особе које могу да допринесу и оне који од стазе добију неку додатну вредност, 
+                <p>Уколико Љубицина стаза заживи и настави да окупља особе које могу да допринесу и оне који од стазе добију неку додатну вредност,
                  стаза се може даље ширити и мапирати Вујан. Уколико желите да допринесете даљем развоју стазе, можете послати мејл. </p>
         </section>
     </div>
 
 </div>
+
+{# Подаци за мапу. Иста бројка стоји и у тексту изнад и овде, јер обоје долази
+   из src/_data/staza.js - нема преписивања руком. #}
+<script type="application/json" id="staza-podaci">
+{
+  "procena": {{ "true" if staza.procena else "false" }},
+  "okvir": {{ staza.okvir | dump | safe }},
+  "pocetak": {{ staza.pocetak | dump | safe }},
+  "kraj": {{ staza.kraj | dump | safe }},
+  "tacke": {{ staza.tacke | dump | safe }}
+}
+</script>

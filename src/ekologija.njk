@@ -1,0 +1,61 @@
+---
+layout: layout.njk
+title: Екологија
+opis: Екологија на Љубициној стази — десет постулата и акције чишћења луњевачке реке.
+---
+
+<div class="flora-layout">
+    <aside class="flora-aside">
+        <nav class="sticky-side-nav">
+            <h3>Каталог</h3>
+            <ul>
+                <li><a href="#zasto">Зашто екологија</a></li>
+                {% if postulati.length %}<li><a href="#postulati">Десет постулата</a></li>{% endif %}
+                <li><a href="#reka">Чишћење реке</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="flora-content">
+        <h1>Екологија</h1>
+
+        {# NACRT UVODA - napisan od onoga sto vec stoji na stranici O Ljubici.
+           Slobodno ga zameni svojim tekstom. #}
+        <section id="zasto" class="plant-card">
+            <h2>Зашто екологија на овој стази</h2>
+            <p>Љубица је веровала да ко једном осети љубав према природи, за њега екологија
+            постаје завет. Није пролазила поред проблема равнодушно: покренула је прво чишћење
+            луњевачке реке и била модератор на скупу у Горњем Милановцу посвећеном загађењу.</p>
+            <p>Зато ова стаза није само шетња. Уз пут стоје табле о флори, фауни и историји
+            Вујна, а уз њих и оно најједноставније — да се планина остави онаквом каквом је
+            затечена.</p>
+        </section>
+
+        {% if postulati.length %}
+        <section id="postulati" class="plant-card">
+            <h2>Десет постулата екологије</h2>
+            <ul class="poruke-mreza postulati">
+                {% for postulat in postulati %}
+                <li class="poruka postulat">{{ postulat.tekst }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {# OVDE IDE TVOJ OPIS AKCIJE - dole je samo ono sto vec stoji na sajtu. #}
+        <section id="reka" class="plant-card">
+            <h2>Чишћење луњевачке реке</h2>
+            <p>Прво чишћење луњевачке реке покренула је Љубица. Акција је окупила мештане и
+            пријатеље, а снимак је забележен и објављен на Јутјубу.</p>
+
+            <a class="video-veza" href="https://www.youtube.com/watch?v=Z31ThD_37CA"
+               target="_blank" rel="noopener">
+                <span class="video-znak" aria-hidden="true">▶</span>
+                <span class="video-opis">
+                    <b>Еко акција „Заврни рукаве“</b>
+                    <span>Снимак акције на Јутјубу · канал „Повратак на село“</span>
+                </span>
+            </a>
+        </section>
+    </div>
+</div>

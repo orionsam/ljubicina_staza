@@ -37,6 +37,7 @@ body {
     background-color: var(--light-bg-green);
     color: var(--tekst);
     position: relative;
+    overflow-wrap: break-word;
 }
 
 img { max-width: 100%; }
@@ -233,8 +234,9 @@ main a:hover { color: var(--dark-green); }
 .flora-content { flex: 1; }
 
 /* Sprecava da flex kolone odbiju da se skupe ispod sirine svoje dece */
-.flora-layout, .flex-row, .plant-hero,
-.flora-content, .flex-col, .hero-text, .hero-images { min-width: 0; }
+.flora-layout, .flex-row, .plant-hero, .zivotopis-zaglavlje,
+.flora-content, .flex-col, .hero-text, .hero-images,
+.zivotopis-naslov { min-width: 0; }
 
 .sticky-side-nav {
     background: var(--dark-green);
@@ -289,10 +291,11 @@ main a:hover { color: var(--dark-green); }
    ne pogadja nista - display:contents menja raspored, ali ne i selektore. */
 .plant-card > img,
 .plant-card > picture > img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    margin: 20px 0;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 460px;
+    margin: 20px auto;
     border-radius: 8px;
 }
 
@@ -324,6 +327,15 @@ main a:hover { color: var(--dark-green); }
     height: auto;
     border-radius: 8px;
     display: block;
+}
+
+/* Uspravna fotografija ume da bude dvaput visa od teksta pored nje, pa se u
+   kartici ogranicava visinom - sirinu onda odredjuje sama slika, bez secenja */
+.plant-card .flex-col img {
+    width: auto;
+    max-width: 100%;
+    max-height: 420px;
+    margin: 0 auto;
 }
 
 /* Uvodni deo sekcije: tekst + istaknute slike */
@@ -360,7 +372,7 @@ main a:hover { color: var(--dark-green); }
 /* 8. KARTICE VRSTA ------------------------------------------------------ */
 .vrste-mreza {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
     gap: 20px;
     margin: 25px 0;
 }
@@ -373,7 +385,8 @@ main a:hover { color: var(--dark-green); }
 
 .vrsta img {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: cover;
     border-radius: 6px;
     border: 2px solid var(--leaf-green);
@@ -420,7 +433,7 @@ main a:hover { color: var(--dark-green); }
     padding: 0;
     margin: 20px 0 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
     gap: 8px 20px;
 }
 
@@ -439,15 +452,17 @@ main a:hover { color: var(--dark-green); }
     text-align: center;
 }
 
+/* Zidne novine: kolone, a svaka slika u svojoj visini - bez secenja */
 .main-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    columns: 3 280px;
+    column-gap: 20px;
     margin-top: 40px;
 }
 
 .gallery-item {
     display: block;
+    break-inside: avoid;
+    margin-bottom: 20px;
     overflow: hidden;
     border-radius: 8px;
     border: 3px solid var(--leaf-green);
@@ -459,15 +474,14 @@ main a:hover { color: var(--dark-green); }
 
 .gallery-item img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: auto;
     display: block;
 }
 
 /* Slike sa postavljanja staze */
 .staza-galerija {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
     gap: 15px;
     margin-top: 25px;
 }
@@ -499,9 +513,435 @@ footer {
     margin: 0;
 }
 
+/* 11. STRANICA O LJUBICI - zivotopis i poruke ---------------------------- */
+/* Tablice sa porukama duz staze - svaka poruka dobija svoju karticu.
+   Sve kartice su jednake i redjaju se redom kojim se srecu na stazi. */
+
+/* Zivotopis: slika levo, ime i posveta desno, pa tekst preko cele kartice */
+.zivotopis-zaglavlje {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.zivotopis-zaglavlje img {
+    flex: none;
+    width: 320px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.zivotopis-naslov { flex: 1; }
+.zivotopis-naslov h2 { margin-top: 0; }
+
+.zivotopis-moto {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    color: var(--dark-green);
+    margin: 0 0 18px;
+}
+
+.zivotopis-uvod {
+    font-style: italic;
+    color: var(--tekst-tih);
+}
+
+/* Duge pasuse je tesko pratiti preko cele sirine kartice */
+.zivotopis p { max-width: 68ch; }
+
+/* Fotografije unutar zivotopisa - stoje izmedju pasusa, u istoj koloni kao tekst */
+.zivotopis-slika {
+    max-width: 68ch;
+    margin: 32px 0;
+}
+
+.zivotopis-slika img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.zivotopis-slika figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--tekst-tih);
+}
+
+/* Uspravna fotografija bi preko cele kolone bila visoka koliko ceo ekran */
+.zivotopis-slika.uspravna { max-width: 420px; }
+
+.zivotopis-zavrsetak {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(141, 166, 118, 0.5);
+    text-align: center;
+    font-family: 'Roboto Slab', Georgia, serif;
+    color: var(--dark-green);
+}
+
+.zivotopis-zavrsetak p {
+    max-width: 60ch;
+    margin: 0 auto 12px;
+    font-size: 1.1rem;
+}
+
+.zivotopis-zavrsetak .zivotopis-potpis {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+/* Uvod sekcije (tekst + slika) unutar kartice ne treba razmak kao izmedju
+   dve odvojene sekcije */
+.plant-card > .flex-row { margin-bottom: 30px; }
+
+.poruke-mreza {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+    gap: 20px;
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.poruka {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    padding: 26px 24px;
+    background: var(--light-bg-green);
+    border-radius: var(--radius);
+    border-left: 5px solid var(--leaf-green);
+    box-shadow: var(--senka);
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--dark-green);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.poruka:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Navodnik je ukras, ne tekst - stoji iznad poruke, da je ne dodiruje */
+.poruka::before {
+    content: "\201E";
+    font-size: 2.4rem;
+    line-height: 0.5;
+    margin-bottom: 16px;
+    color: var(--leaf-green);
+    opacity: 0.55;
+}
+
+/* 12. MAPA STAZE - pocetak, mapa, brojke i profil uspona ----------------- */
+
+/* Kartica sa koordinatama pocetka. Stoji izdvojeno od teksta, jer je to
+   podatak po koji se ljudi vracaju na stranicu pred polazak. */
+.pocetak-kartica {
+    margin-top: 25px;
+    padding: 20px 22px;
+    background: var(--light-bg-green);
+    border-left: 5px solid var(--leaf-green);
+    border-radius: 0 8px 8px 0;
+}
+
+.pocetak-kartica h3 { margin: 0 0 10px; color: var(--dark-green); }
+
+.koordinate {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    margin: 0 0 16px;
+    /* Cifre u jednakoj sirini - lakse se prepisuju i poravnate su */
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+    font-size: 1.05rem;
+    color: var(--dark-green);
+}
+
+.pocetak-dugmad {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 12px;
+}
+
+.dugme {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--dark-green);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.dugme:hover { background: #3c5640; transform: translateY(-1px); }
+
+.dugme.sporedno {
+    background: transparent;
+    color: var(--dark-green);
+    box-shadow: inset 0 0 0 2px var(--leaf-green);
+}
+
+.dugme.sporedno:hover { background: rgba(141, 166, 118, 0.18); }
+
+.sitno {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--tekst-tih);
+}
+
+.napomena { margin-top: 18px; font-style: italic; }
+
+/* Leaflet-u mora da se zada visina - sam je ne racuna.
+   position + z-index prave zaseban sloj, pa unutrasnji slojevi mape (koji idu
+   do z-index 1000) ne mogu da se popnu preko bocnog kataloga koji je sticky. */
+.mapa-okvir {
+    position: relative;
+    z-index: 0;
+    height: 460px;
+    margin: 20px 0 8px;
+    border-radius: var(--radius);
+    box-shadow: var(--senka);
+    background: var(--light-bg-green);
+}
+
+.mapa-uputstvo { margin-bottom: 8px; }
+
+/* Vidi se dok se mapa ne ucita, i ostaje ako JavaScript ne radi */
+.mapa-zamena {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--tekst-tih);
+}
+
+/* Nazivi pocetka i vrha na mapi - tacka plus natpis pored nje */
+.mapa-oznaka {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: max-content;
+    /* divIcon dolazi sa apsolutnim pozicioniranjem po gornjem levom uglu;
+       ovim se tacka poklapa sa stvarnom koordinatom */
+    transform: translate(-7px, -7px);
+}
+
+.mapa-oznaka-tacka {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    flex: none;
+}
+
+.mapa-oznaka.je-pocetak .mapa-oznaka-tacka { background: var(--upozorenje); }
+.mapa-oznaka.je-vrh .mapa-oznaka-tacka { background: var(--dark-green); }
+
+.mapa-oznaka-tekst {
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.88);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--dark-green);
+    white-space: nowrap;
+}
+
+/* Brojke o stazi */
+.brojke {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px 22px;
+    margin: 18px 0 30px;
+}
+
+.brojke dt {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tekst-tih);
+}
+
+.brojke dd {
+    margin: 4px 0 0;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1.05rem;
+    color: var(--dark-green);
+}
+
+/* Profil uspona. SVG nosi samo geometriju i razvlaci se preko cele sirine;
+   natpisi su HTML pored njega, pa ostaju iste velicine na svakom ekranu. */
+.profil-okvir {
+    --profil-visina: 210px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0 10px;
+    margin: 12px 0 0;
+}
+
+/* Brojevi na levoj osi - svaki se postavlja po procentu koji je izracunat
+   pri izgradnji sajta, pa prati istu mrezu kao linije u SVG-u. */
+.profil-ose {
+    position: relative;
+    height: var(--profil-visina);
+    width: 3.6em;
+}
+
+.profil-ose span {
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--tekst-tih);
+    white-space: nowrap;
+}
+
+.profil {
+    display: block;
+    width: 100%;
+    height: var(--profil-visina);
+}
+
+.profil-mreza {
+    stroke: var(--leaf-green);
+    stroke-width: 1;
+    opacity: 0.35;
+}
+
+.profil-povrsina {
+    fill: var(--leaf-green);
+    opacity: 0.3;
+}
+
+.profil-linija {
+    fill: none;
+    stroke: var(--dark-green);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.profil-mesta {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 8px 0 0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--dark-green);
+}
+
+/* Boje koje mapa.js cita iz CSS-a, da stoje na istom mestu kao i ostale */
+:root {
+    --staza-linija: #8a3220;
+    --staza-tacka: #2d4130;
+}
+
+/* 13. EKOLOGIJA ---------------------------------------------------------- */
+/* Postulati nose izgled Ljubicinih poruka, samo umesto navodnika stoji redni
+   broj - da se vidi da je to niz od deset, a ne nasumicne izreke. */
+.postulati { counter-reset: postulat; }
+
+.postulat { counter-increment: postulat; }
+
+.postulat::before {
+    content: counter(postulat);
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 14px;
+    color: var(--leaf-green);
+    opacity: 1;
+}
+
+/* Veza ka snimku akcije - ne vuce nista sa Jutjuba, samo vodi na njega */
+.video-veza {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 25px;
+    padding: 18px 22px;
+    background: var(--light-bg-green);
+    border-radius: var(--radius);
+    border-left: 5px solid var(--leaf-green);
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-veza:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--senka);
+}
+
+.video-znak {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding-left: 3px;
+    border-radius: 50%;
+    background: var(--dark-green);
+    color: var(--white);
+    font-size: 1.05rem;
+}
+
+.video-opis {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.video-opis b {
+    font-family: 'Roboto Slab', Georgia, serif;
+    color: var(--dark-green);
+}
+
+.video-opis span {
+    font-size: 0.9rem;
+    color: var(--tekst-tih);
+}
+
 /* =========================================================================
-   11. MEDIA QUERY-JI - svi na jednom mestu, od sireg ka uzem ekranu
+   14. MEDIA QUERY-JI - svi na jednom mestu, od sireg ka uzem ekranu
    ========================================================================= */
+
+/* Uz bocni katalog kolona sa tekstom postane preuska za dve kolone unutar
+   kartice, pa se tekst i slika premestaju jedno ispod drugog jos pre 900px */
+@media (max-width: 1150px) {
+    .zivotopis-zaglavlje { flex-direction: column; gap: 22px; }
+    .zivotopis-zaglavlje img { width: 100%; max-width: 420px; }
+
+    .plant-hero { flex-direction: column; gap: 25px; }
+    /* Istaknute slike slozene jedna do druge, da ne zauzmu pola ekrana */
+    .hero-images { flex-direction: row; flex-wrap: wrap; }
+    .hero-images > * { flex: 1 1 220px; }
+    .flex-row, .flex-row.reverse { flex-direction: column; gap: 20px; margin-bottom: 40px; }
+    .flex-col { width: 100%; }
+
+    /* Slozena slika preko cele sirine kartice izgleda predimenzionirano */
+    .plant-card .flex-col img { max-width: min(100%, 520px); }
+}
 
 @media (max-width: 900px) {
     .flora-layout { flex-direction: column; gap: 25px; }
@@ -522,9 +962,6 @@ footer {
     .sticky-side-nav li { margin-bottom: 0; }
 
     .home-grid { flex-direction: column; gap: 30px; }
-    .plant-hero { flex-direction: column; gap: 25px; }
-    .flex-row, .flex-row.reverse { flex-direction: column; gap: 20px; margin-bottom: 40px; }
-    .flex-col { width: 100%; }
 }
 
 @media (max-width: 768px) {
@@ -574,7 +1011,7 @@ footer {
     .home-text { padding: 22px; }
     .plant-card { padding: 20px; }
     .plant-card > img,
-    .plant-card > picture > img { height: 220px; }
+    .plant-card > picture > img { max-height: 320px; }
 
     .plant-card > img.ilustracija,
     .plant-card > picture > img.ilustracija {
@@ -590,10 +1027,13 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .vrste-mreza { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-    .vrsta img { height: 130px; }
-    .main-gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .gallery-item img { height: 150px; }
+    .mapa-okvir { height: 340px; }
+    .profil-okvir { --profil-visina: 150px; }
+    .brojke { grid-template-columns: 1fr 1fr; }
+    .vrste-mreza { grid-template-columns: repeat(auto-fill, minmax(min(140px, 100%), 1fr)); gap: 15px; }
+
+    .main-gallery-grid { columns: 2 140px; column-gap: 10px; }
+    .gallery-item { margin-bottom: 10px; }
     .staza-galerija { grid-template-columns: 1fr 1fr; gap: 10px; }
     .staza-galerija img { height: 140px; }
     .vrste-spisak { grid-template-columns: 1fr; }

@@ -5,5 +5,6 @@
  { "link": "/flora/",     "naziv": "Флора" },
  { "link": "/fauna/",     "naziv": "Фауна" },
  { "link": "/vujan/",     "naziv": "Вујан" },
+ { "link": "/ekologija/", "naziv": "Екологија" },
  { "link": "/galerija/",  "naziv": "Галерија" }
 ]

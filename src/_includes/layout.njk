@@ -22,6 +22,10 @@
     <meta name="theme-color" content="#2d4130">
 
     <link rel="stylesheet" href="/style.css">
+
+    {# Leaflet ide samo na stranice koje u zaglavlju imaju "mapa: true" - nema
+       razloga da se vuce na Flori, Fauni ili Galeriji gde mape nema. #}
+    {% if mapa %}<link rel="stylesheet" href="/vendor/leaflet/leaflet.css">{% endif %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -69,5 +73,12 @@
             <p class="footer-info">Љубицина стаза · планина Вујан · село Луњевица</p>
         </div>
     </footer>
+
+    {% if mapa %}
+    {# defer na oba: ne blokiraju iscrtavanje, a izvrsavaju se redom - pa je
+       Leaflet sigurno ucitan kad mapa.js krene. #}
+    <script src="/vendor/leaflet/leaflet.js" defer></script>
+    <script src="/js/mapa.js" defer></script>
+    {% endif %}
 </body>
 </html>

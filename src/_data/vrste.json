@@ -458,6 +458,16 @@
  ],
  "lekovite": [
   {
+   "slika": "/images/flora/sremus.png",
+   "latinski": "Allium ursinum",
+   "srpski": "Сремуш"
+  },
+  {
+   "slika": "/images/flora/kopitnjak.jpg",
+   "latinski": "Asarum europaeum",
+   "srpski": "Копитњак"
+  },
+  {
    "slika": "/images/flora/nana.jpg",
    "latinski": "Mentha spicata",
    "srpski": "Класаста нана"
@@ -608,6 +618,294 @@
    "slika": "/images/flora/zevalica.jpg",
    "latinski": "Scrophularia canina subsp. tristis",
    "srpski": "Жалосна зевалица"
+  }
+ ],
+ "drvece": [
+  {
+   "srpski": "Буква",
+   "latinski": "Fagus sylvatica"
+  },
+  {
+   "srpski": "Храст китњак",
+   "latinski": "Quercus petraea"
+  },
+  {
+   "srpski": "Цер",
+   "latinski": "Quercus cerris"
+  },
+  {
+   "srpski": "Граб",
+   "latinski": "Carpinus betulus"
+  },
+  {
+   "srpski": "Липа",
+   "latinski": "Tilia platyphyllos"
+  },
+  {
+   "srpski": "Клен",
+   "latinski": "Acer campestre"
+  },
+  {
+   "srpski": "Горски јавор",
+   "latinski": "Acer pseudoplatanus"
+  },
+  {
+   "srpski": "Багрем",
+   "latinski": "Robinia pseudoacacia"
+  },
+  {
+   "srpski": "Црни јасен",
+   "latinski": "Fraxinus ornus"
+  },
+  {
+   "srpski": "Јасика",
+   "latinski": "Populus tremula"
+  },
+  {
+   "srpski": "Дивља трешња",
+   "latinski": "Prunus avium"
+  }
+ ],
+ "zbunje": [
+  {
+   "srpski": "Брдски брест",
+   "latinski": "Ulmus glabra"
+  },
+  {
+   "srpski": "Врба ива",
+   "latinski": "Salix caprea"
+  },
+  {
+   "srpski": "Мукиња",
+   "latinski": "Sorbus aria"
+  },
+  {
+   "srpski": "Брекиња",
+   "latinski": "Sorbus torminalis"
+  },
+  {
+   "srpski": "Зова",
+   "latinski": "Sambucus nigra"
+  },
+  {
+   "srpski": "Леска",
+   "latinski": "Corylus avellana"
+  },
+  {
+   "srpski": "Дрен",
+   "latinski": "Cornus mas"
+  },
+  {
+   "srpski": "Глог",
+   "latinski": "Crataegus monogyna"
+  },
+  {
+   "srpski": "Шипурак",
+   "latinski": "Rosa canina"
+  },
+  {
+   "srpski": "Велебиље",
+   "latinski": "Atropa belladonna"
+  },
+  {
+   "srpski": "Купина",
+   "latinski": "Rubus fruticosus"
+  },
+  {
+   "srpski": "Свиб",
+   "latinski": "Cornus sanguinea"
+  },
+  {
+   "srpski": "Црвена худика",
+   "latinski": "Viburnum opulus"
+  }
+ ],
+ "trave": [
+  {
+   "srpski": "Росуља",
+   "latinski": "Agrostis sp."
+  },
+  {
+   "srpski": "Кресац",
+   "latinski": "Cynosurus cristatus"
+  },
+  {
+   "srpski": "Власуља",
+   "latinski": "Festuca sp."
+  },
+  {
+   "srpski": "Шиљак",
+   "latinski": "Danthonia calycina"
+  },
+  {
+   "srpski": "Овсеница",
+   "latinski": "Arrhenatherum elatius"
+  },
+  {
+   "srpski": "Смилац",
+   "latinski": "Koeleria sp."
+  },
+  {
+   "srpski": "Медуника",
+   "latinski": "Holcus lanatus"
+  },
+  {
+   "srpski": "Мирисавка",
+   "latinski": "Anthoxanthum odoratum"
+  },
+  {
+   "srpski": "Овсика",
+   "latinski": "Bromus sp."
+  },
+  {
+   "srpski": "Ливадарка",
+   "latinski": "Poa sp."
+  },
+  {
+   "srpski": "Попино прасе",
+   "latinski": "Hordeum murinum"
+  },
+  {
+   "srpski": "Трепуша",
+   "latinski": "Melica ciliata"
+  },
+  {
+   "srpski": "Јежевица",
+   "latinski": "Dactylis glomerata"
+  },
+  {
+   "srpski": "Љуљ",
+   "latinski": "Lolium sp."
+  },
+  {
+   "srpski": "Шашуљица",
+   "latinski": "Calamagrostis epigeios"
+  },
+  {
+   "srpski": "Ђипвина",
+   "latinski": "Chrysopogon gryllus"
+  }
+ ],
+ "aromaticne": [
+  {
+   "srpski": "Медвеђи лук",
+   "latinski": "Allium ursinum"
+  },
+  {
+   "srpski": "Анђелика",
+   "latinski": "Angelica sylvestris"
+  },
+  {
+   "srpski": "Пастрњак",
+   "latinski": "Pastinaca sativa"
+  },
+  {
+   "srpski": "Копитњак",
+   "latinski": "Asarum europaeum"
+  },
+  {
+   "srpski": "Хајдучка трава",
+   "latinski": "Achillea millefolium"
+  },
+  {
+   "srpski": "Водопија",
+   "latinski": "Cichorium intybus"
+  },
+  {
+   "srpski": "Конопљуша",
+   "latinski": "Eupatorium cannabinum"
+  },
+  {
+   "srpski": "Вратич",
+   "latinski": "Tanacetum vulgare"
+  },
+  {
+   "srpski": "Маслачак",
+   "latinski": "Taraxacum officinale"
+  },
+  {
+   "srpski": "Подбел",
+   "latinski": "Tussilago farfara"
+  },
+  {
+   "srpski": "Гавез",
+   "latinski": "Symphytum officinale"
+  },
+  {
+   "srpski": "Одољен",
+   "latinski": "Valeriana officinalis"
+  },
+  {
+   "srpski": "Змијино грожђе",
+   "latinski": "Tamus communis"
+  },
+  {
+   "srpski": "Ждраљевина",
+   "latinski": "Galega officinalis"
+  },
+  {
+   "srpski": "Кичица",
+   "latinski": "Centaurium erythraea"
+  },
+  {
+   "srpski": "Кантарион",
+   "latinski": "Hypericum perforatum"
+  },
+  {
+   "srpski": "Каламинта",
+   "latinski": "Clinopodium menthifolium"
+  },
+  {
+   "srpski": "Дивљи босиљак",
+   "latinski": "Calaminta vulgaris"
+  },
+  {
+   "srpski": "Матичњак",
+   "latinski": "Melissa officinalis"
+  },
+  {
+   "srpski": "Нана",
+   "latinski": "Mentha sp."
+  },
+  {
+   "srpski": "Подубица",
+   "latinski": "Teucrium chamaedrys"
+  },
+  {
+   "srpski": "Трава ива",
+   "latinski": "Teucrium montanum"
+  },
+  {
+   "srpski": "Мајчина душица",
+   "latinski": "Thymus sp."
+  },
+  {
+   "srpski": "Росопас",
+   "latinski": "Chelidonium majus"
+  },
+  {
+   "srpski": "Женска боквица",
+   "latinski": "Plantago major"
+  },
+  {
+   "srpski": "Разгон",
+   "latinski": "Veronica officinalis"
+  },
+  {
+   "srpski": "Ивањско цвеће",
+   "latinski": "Galium verum"
+  },
+  {
+   "srpski": "Уступник",
+   "latinski": "Scrophularia nodosa"
+  },
+  {
+   "srpski": "Дивизма крупноцветна",
+   "latinski": "Verbascum phlomoides"
+  },
+  {
+   "srpski": "Коприва",
+   "latinski": "Urtica dioica"
   }
  ]
 }

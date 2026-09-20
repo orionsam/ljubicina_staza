@@ -1,0 +1,310 @@
+{
+  "_napomena": "Generisano sa: node alati/izvuci-stazu.js - ne menjati rucno.",
+  "izvor": {
+    "mid": "1SjdGc5pSjFRucT4UYKc_4thATNXvY2g",
+    "povuceno": "2026-09-20",
+    "visine": "srtm30m",
+    "najvece_neslaganje_modela_m": 10
+  },
+  "trag": null,
+  "tacke": [
+    {
+      "br": 39,
+      "lat": 43.989056,
+      "lon": 20.467806,
+      "visina": 462,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 38,
+      "lat": 43.98925,
+      "lon": 20.467583,
+      "visina": 460,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 37,
+      "lat": 43.989667,
+      "lon": 20.467056,
+      "visina": 461,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 36,
+      "lat": 43.989944,
+      "lon": 20.466083,
+      "visina": 471,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 35,
+      "lat": 43.989417,
+      "lon": 20.464861,
+      "visina": 496,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 34,
+      "lat": 43.988611,
+      "lon": 20.464861,
+      "visina": 512,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 33,
+      "lat": 43.988167,
+      "lon": 20.464056,
+      "visina": 524,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 32,
+      "lat": 43.987222,
+      "lon": 20.463694,
+      "visina": 545,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 31,
+      "lat": 43.98675,
+      "lon": 20.463611,
+      "visina": 557,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 30,
+      "lat": 43.987167,
+      "lon": 20.462778,
+      "visina": 560,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 29,
+      "lat": 43.987556,
+      "lon": 20.462,
+      "visina": 575,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 28,
+      "lat": 43.988111,
+      "lon": 20.46125,
+      "visina": 585,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 27,
+      "lat": 43.988417,
+      "lon": 20.460639,
+      "visina": 589,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 26,
+      "lat": 43.987611,
+      "lon": 20.460306,
+      "visina": 607,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 25,
+      "lat": 43.987278,
+      "lon": 20.460306,
+      "visina": 609,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 24,
+      "lat": 43.986583,
+      "lon": 20.460806,
+      "visina": 622,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 23,
+      "lat": 43.985778,
+      "lon": 20.461056,
+      "visina": 642,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 22,
+      "lat": 43.985222,
+      "lon": 20.461139,
+      "visina": 653,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 21,
+      "lat": 43.984861,
+      "lon": 20.461417,
+      "visina": 661,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 20,
+      "lat": 43.984444,
+      "lon": 20.461639,
+      "visina": 671,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 19,
+      "lat": 43.983306,
+      "lon": 20.461944,
+      "visina": 689,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 18,
+      "lat": 43.983028,
+      "lon": 20.462194,
+      "visina": 697,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 17,
+      "lat": 43.98225,
+      "lon": 20.462306,
+      "visina": 711,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 16,
+      "lat": 43.981139,
+      "lon": 20.462472,
+      "visina": 731,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 15,
+      "lat": 43.980333,
+      "lon": 20.463361,
+      "visina": 741,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 14,
+      "lat": 43.979833,
+      "lon": 20.464056,
+      "visina": 748,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 13,
+      "lat": 43.9795,
+      "lon": 20.464639,
+      "visina": 761,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 12,
+      "lat": 43.978889,
+      "lon": 20.465306,
+      "visina": 771,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 11,
+      "lat": 43.978472,
+      "lon": 20.465583,
+      "visina": 775,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 10,
+      "lat": 43.978083,
+      "lon": 20.465833,
+      "visina": 785,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 9,
+      "lat": 43.977611,
+      "lon": 20.466083,
+      "visina": 798,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 8,
+      "lat": 43.976861,
+      "lon": 20.466389,
+      "visina": 813,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 7,
+      "lat": 43.975889,
+      "lon": 20.466389,
+      "visina": 832,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 6,
+      "lat": 43.975,
+      "lon": 20.466306,
+      "visina": 851,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 5,
+      "lat": 43.973972,
+      "lon": 20.466639,
+      "visina": 847,
+      "tip": null,
+      "opis": null
+    },
+    {
+      "br": 4,
+      "lat": 43.973694,
+      "lon": 20.46575,
+      "visina": 858,
+      "tip": null,
+      "opis": null
+    }
+  ],
+  "izdvojene": [
+    {
+      "br": 2,
+      "lat": 43.990167,
+      "lon": 20.466667,
+      "visina": 464,
+      "tip": null,
+      "opis": "Ne pripada nizu tacaka duz staze - proveriti sta je."
+    }
+  ]
+}
