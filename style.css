@@ -202,17 +202,9 @@ main a:hover { color: var(--dark-green); }
     display: grid;
     grid-template-columns: 0.7fr 2fr;
     gap: 50px;
+    align-items: start;
 }
 
-/* Flex, ne grid, za galeriju: eleventy-img ispisuje width/height atribute na
-   <img> (zbog CLS-a), pa slika nosi sopstveni razmer (npr. 1200x1600). Grid
-   red (cak i minmax(0,1fr) + overflow:hidden na slici) i dalje racuna "auto"
-   velicinu reda po tom razmeru - to je namerna zastita browsera da slika ne
-   nestane u mrezi, ali ovde upravo to pravi visak visine u galeriji koji
-   onda rastegne i .home-text preko stvarnog teksta (prazan prostor ispod
-   pasusa). flex-basis: 0 na slici to zaobilazi - startuje sa visinom 0 i tek
-   onda flex-grow deli preostali (od texta zadati) prostor, bez obzira na
-   razmer slike. */
 .home-gallery {
     display: flex;
     flex-direction: column;
@@ -230,6 +222,7 @@ main a:hover { color: var(--dark-green); }
 }
 
 .home-text {
+    flex: 2;
     background: rgba(255, 255, 255, 0.6);
     padding: 40px;
     border-radius: var(--radius);
@@ -302,12 +295,6 @@ main a:hover { color: var(--dark-green); }
     scroll-margin-top: 20px;
 }
 
-/* Nekad puna 5px linija (border-top) - puna boja je ostala (bez fade-a ka
-   ivicama), samo sada baca meku senku ispod sebe umesto ostre ivice, pa
-   deluje kao traka koja "lebdi" nad karticom, ne kao nalepljena linija.
-   Senka ima vodoravni pomeraj (pada samo na jednu stranu, kao od prirodnog
-   svetla) - bez njega izgleda zaseceno podjednako i levo i desno, sto ne
-   deluje prirodno. */
 .plant-card::before {
     content: "";
     position: absolute;
@@ -322,10 +309,6 @@ main a:hover { color: var(--dark-green); }
 
 .plant-card h2 { margin-top: 0; }
 
-/* Vodeca slika sekcije: puna sirina kartice, ujednacena visina.
-   (Ranije width:auto + height:300px, pa su slike ispadale nasumicnih sirina.)
-   Mora i varijanta kroz <picture>: eleventy-img umota sliku, pa ">" sam po sebi
-   ne pogadja nista - display:contents menja raspored, ali ne i selektore. */
 .plant-card > img,
 .plant-card > picture > img {
     display: block;
@@ -366,8 +349,6 @@ main a:hover { color: var(--dark-green); }
     display: block;
 }
 
-/* Uspravna fotografija ume da bude dvaput visa od teksta pored nje, pa se u
-   kartici ogranicava visinom - sirinu onda odredjuje sama slika, bez secenja */
 .plant-card .flex-col img {
     width: auto;
     max-width: 100%;
@@ -585,11 +566,7 @@ footer {
     color: var(--tekst-tih);
 }
 
-/* Tekst ide preko cele sirine kartice, isto kao na ostalim stranicama
-   (npr. flora, fauna) - .plant-card pasusi nigde drugde nemaju ovakvo
-   ogranicenje, pa ga ni ovde ne zadrzavamo. */
 
-/* Fotografije unutar zivotopisa - stoje izmedju pasusa, preko cele sirine kartice */
 .zivotopis-slika {
     margin: 32px 0;
 }
@@ -608,8 +585,6 @@ footer {
     color: var(--tekst-tih);
 }
 
-/* Uspravna fotografija bi preko cele kolone bila visoka koliko ceo ekran -
-   jedina koja ostaje ogranicene sirine, pa je i centriramo */
 .zivotopis-slika.uspravna { max-width: 420px; margin-left: auto; margin-right: auto; }
 
 .zivotopis-zavrsetak {
