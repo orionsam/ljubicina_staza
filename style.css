@@ -202,7 +202,6 @@ main a:hover { color: var(--dark-green); }
     display: grid;
     grid-template-columns: 0.7fr 2fr;
     gap: 50px;
-    align-items: start;
 }
 
 .home-gallery {
@@ -222,7 +221,6 @@ main a:hover { color: var(--dark-green); }
 }
 
 .home-text {
-    flex: 2;
     background: rgba(255, 255, 255, 0.6);
     padding: 40px;
     border-radius: var(--radius);
