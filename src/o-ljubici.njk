@@ -2,7 +2,7 @@
 layout: layout.njk
 title: О Љубици
 opis: Љубица Драшовић, идејни творац Љубичине стазе — њен пут, њене поруке и људи који су њену идеју спровели у дело.
-og_slika: /images/Ljubica.jpg
+og_slika: /images/ljubica-portret.jpeg
 ---
 
 <div class="flora-layout">
@@ -22,7 +22,7 @@ og_slika: /images/Ljubica.jpg
         <h1>О Љубици</h1>
         <section id="biografija" class="plant-card zivotopis">
             <div class="zivotopis-zaglavlje">
-                <img src="/images/Ljubica.jpg" alt="Љубица Драшовић">
+                <img src="/images/ljubica-portret.jpeg" alt="Љубица Драшовић">
                 <div class="zivotopis-naslov">
                     <h2>Љубица Драшовић</h2>
                     <p class="zivotopis-moto">Љубав. Снага. Осмех. Свесност.</p>
@@ -51,6 +51,12 @@ og_slika: /images/Ljubica.jpg
             дуго чекао да буде завршен, верујући да заједништво и упорност могу да мењају
             ствари. Своју кућу је са посебном пажњом уредила, стварајући место топлине,
             окупљања и љубави.</p>
+
+            <figure class="zivotopis-slika uspravna">
+                <img src="/images/ljubica-hajducka-trava.jpeg"
+                     alt="Љубица чучи у трави и бере беле цветове хајдучке траве">
+                <figcaption>Међу цветовима хајдучке траве.</figcaption>
+            </figure>
 
             <p>Била је особа која није пролазила поред проблема равнодушно. Покренула је прво
             чишћење луњевачке реке, подстицала бригу о природи и заједници, ширила доброчинство
@@ -84,9 +90,9 @@ og_slika: /images/Ljubica.jpg
             породицом, помажу да њена доброта, љубав према људима и њене идеје наставе да
             живе.</p>
 
-            <figure class="zivotopis-slika uspravna">
-                <img src="/images/ljubica-vajat.jpg"
-                     alt="Љубица се смеје на тераси старог вајата">
+            <figure class="zivotopis-slika">
+                <img src="/images/ljubica-osmeh.jpeg"
+                     alt="Насмејана Љубица у шуми, са наочарима за сунце на глави">
                 <figcaption>Осмех по коме је памтимо.</figcaption>
             </figure>
 
@@ -134,11 +140,18 @@ og_slika: /images/Ljubica.jpg
                 </div>
             </div>
 
-            <ul class="poruke-mreza">
+            {# Poruke se nizu duz vijugave staze, levo i desno od nje, svaka uz
+               sliku iz galerije. Slika je ukras uz rec, pa nema svoj alt. #}
+            <ol class="poruke-staza">
                 {% for poruka in poruke %}
-                <li class="poruka">{{ poruka.tekst }}</li>
+                <li class="poruka-stanica">
+                    <figure class="poruka-kartica">
+                        {% if poruka.slika %}<img src="/images/galerija/{{ poruka.slika }}" alt="" loading="lazy">{% endif %}
+                        <blockquote>{{ poruka.tekst }}</blockquote>
+                    </figure>
+                </li>
                 {% endfor %}
-            </ul>
+            </ol>
         </section>
 
         <section id="porodica" class="flex-row reverse plant-card">

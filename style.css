@@ -16,15 +16,20 @@
     --upozorenje-bg: #fbf0ed;
     --senka: 0 4px 15px rgba(0, 0, 0, 0.05);
     --radius: 12px;
+    /* Koliko prostora zauzima zalepljeni meni - toliko se odmice sve sto
+       se lepi uz vrh (bocni katalog) i sve na sta vodi sidro (#suma...) */
+    --visina-menija: 140px;
 }
 
 /* 2. OSNOVA ------------------------------------------------------------ */
 * { box-sizing: border-box; }
 
-html {
+/* Sidro (#suma, #gljive...) ne sme da zavrsi ispod zalepljenog menija.
+   Na oba elementa jer skroluje body (overflow-x na html-u ga pravi zasebnim
+   kontejnerom), a vazi samo na onom koji zaista skroluje. */
+html, body {
     scroll-behavior: smooth;
-    /* Sidro (#suma, #gljive...) ne sme da zavrsi ispod ivice ekrana */
-    scroll-padding-top: 20px;
+    scroll-padding-top: var(--visina-menija);
 }
 
 html, body { height: 100%; margin: 0; overflow-x: hidden; }
@@ -126,9 +131,33 @@ main a:hover { color: var(--dark-green); }
 }
 
 /* 5. NAVIGACIJA --------------------------------------------------------- */
+/* Meni ostaje zalepljen za vrh ekrana, da se na dugim stranicama ne mora
+   skrolovati nazad do njega. z-index ga drzi iznad bocnog kataloga i mape. */
 .main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     background-color: var(--dark-green);
     padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Cim se krene nanize, logo i znak se glatko smanje, pa zalepljeni meni ne
+   zauzima pola ekrana. Radi u pregledacima koji znaju za animaciju vezanu za
+   skrol; u ostalima meni ostane pune visine, samo zalepljen. */
+@supports (animation-timeline: scroll()) {
+    .site-logo, .znak {
+        animation: meni-se-skuplja linear both;
+        animation-timeline: scroll(nearest block);
+        animation-range: 0 150px;
+    }
+    .site-logo { --visina-malo: 52px; }
+    .znak { --visina-malo: 34px; }
+    :root { --visina-menija: 90px; }
+}
+
+@keyframes meni-se-skuplja {
+    to { height: var(--visina-malo); }
 }
 
 .nav-flex {
@@ -271,7 +300,7 @@ main a:hover { color: var(--dark-green); }
 .flora-aside {
     flex: 0 0 240px;
     position: sticky;
-    top: 20px;
+    top: calc(var(--visina-menija) + 20px);
 }
 
 .flora-content { flex: 1; }
@@ -386,6 +415,32 @@ main a:hover { color: var(--dark-green); }
     max-height: 420px;
     margin: 0 auto;
 }
+
+/* Jedna istaknuta biljka pored teksta - uspravna slika sa potpisom,
+   uokvirena kao kartice vrsta, da ne visi sama u praznom prostoru */
+.istaknuta-biljka {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.plant-card .istaknuta-biljka img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 3px solid var(--leaf-green);
+    box-shadow: var(--senka);
+}
+
+.istaknuta-biljka figcaption {
+    margin-top: 10px;
+    font-size: 0.92rem;
+    color: var(--tekst);
+}
+
+.istaknuta-biljka figcaption i { color: var(--tekst-tih); }
 
 /* Uvodni deo sekcije: tekst + istaknute slike */
 .plant-hero {
@@ -543,6 +598,46 @@ main a:hover { color: var(--dark-green); }
 }
 
 /* 10. FUTER ------------------------------------------------------------- */
+/* Dugme "nazad na vrh" - stoji u donjem desnom uglu. Gde pregledac zna za
+   animaciju vezanu za skrol, pojavi se tek kad se sidje ispod menija. */
+.na-vrh {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--dark-green);
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.na-vrh:hover { background: #3c5640; transform: translateY(-2px); }
+
+/* Dugme je position: fixed, pa mu scroll(nearest) ne vidi body koji zaista
+   skroluje - zato body dobija imenovanu vremensku liniju. */
+@supports (animation-timeline: scroll()) {
+    body { scroll-timeline: --stranica block; }
+    .na-vrh {
+        animation: na-vrh-se-pojavljuje linear both;
+        animation-timeline: --stranica;
+        animation-range: 200px 400px;
+    }
+}
+
+@keyframes na-vrh-se-pojavljuje {
+    from { opacity: 0; visibility: hidden; }
+    to { opacity: 1; visibility: visible; }
+}
+
 footer {
     background-color: var(--dark-green);
     color: var(--white);
@@ -684,6 +779,115 @@ footer {
     margin-bottom: 16px;
     color: var(--leaf-green);
     opacity: 0.55;
+}
+
+/* Ljubicine poruke kao stanice duz staze. Dve kolone, desna pomerena za
+   pola kartice nanize, a izmedju njih vijugava isprekidana linija u boji
+   staze sa mape. Svaka kartica zauzima dva reda mreze; druga pocinje od
+   drugog reda, pa se sve ostale same smicu naizmenicno. */
+.poruke-staza {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 90px;
+    row-gap: 0;
+    margin: 30px 0 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.poruke-staza::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 40px;
+    transform: translateX(-50%);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='160' viewBox='0 0 40 160'%3E%3Cpath d='M20 0 C 36 40, 36 40, 20 80 S 4 120, 20 160' fill='none' stroke='%238a3220' stroke-opacity='0.55' stroke-width='3' stroke-dasharray='9 7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-y center top;
+}
+
+.poruka-stanica {
+    position: relative;
+    grid-row: span 2;
+    padding-bottom: 34px;
+}
+
+.poruka-stanica:nth-child(odd) { grid-column: 1; }
+.poruka-stanica:nth-child(even) { grid-column: 2; }
+.poruka-stanica:nth-child(2) { grid-row: 2 / span 2; }
+
+/* Tacka na stazi, kod kartice */
+.poruka-stanica::after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--leaf-green);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--leaf-green);
+}
+
+.poruka-stanica:nth-child(odd)::after { right: -53px; }
+.poruka-stanica:nth-child(even)::after { left: -53px; }
+
+.poruka-kartica {
+    margin: 0;
+    overflow: hidden;
+    background: var(--light-bg-green);
+    border-radius: var(--radius);
+    box-shadow: var(--senka);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.poruka-kartica:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.poruka-kartica img {
+    display: block;
+    width: 100%;
+    /* eleventy-img upise height u atribut - bez ovoga bi on pregazio 4:3 */
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.poruka-kartica blockquote {
+    margin: 0;
+    padding: 22px 24px 26px;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--dark-green);
+    text-align: center;
+}
+
+.poruka-kartica blockquote::before {
+    content: "\201E";
+    display: block;
+    font-size: 2.4rem;
+    line-height: 0.5;
+    margin-bottom: 14px;
+    color: var(--leaf-green);
+}
+
+/* Na uskom ekranu jedna kolona, a staza ide uz levu ivicu */
+@media (max-width: 768px) {
+    .poruke-staza {
+        grid-template-columns: 1fr;
+        padding-left: 40px;
+    }
+    .poruke-staza::before { left: 12px; transform: translateX(-50%); }
+    .poruka-stanica,
+    .poruka-stanica:nth-child(odd),
+    .poruka-stanica:nth-child(even),
+    .poruka-stanica:nth-child(2) { grid-column: 1; grid-row: auto; padding-bottom: 26px; }
+    .poruka-stanica:nth-child(odd)::after,
+    .poruka-stanica:nth-child(even)::after { left: -38px; right: auto; }
 }
 
 /* 12. MAPA STAZE - pocetak, mapa, brojke i profil uspona ----------------- */
@@ -900,22 +1104,83 @@ footer {
 }
 
 /* 13. EKOLOGIJA ---------------------------------------------------------- */
-/* Postulati nose izgled Ljubicinih poruka, samo umesto navodnika stoji redni
-   broj - da se vidi da je to niz od dvanaest, a ne nasumicne izreke. */
-.postulati { counter-reset: postulat; }
+/* Postulati namerno ne lice na Ljubicine poruke: umesto kartica sa
+   navodnikom, to je numerisan niz, svaki sa svojim crtezom u krugu.
+   Veliki bledi broj u uglu pokazuje da je to niz od dvanaest. */
+.postulati {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 16px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
 
-.postulat { counter-increment: postulat; }
+.postulat {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 56px 18px 18px;
+    background: var(--white);
+    border: 1px solid rgba(141, 166, 118, 0.45);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
 
-.postulat::before {
-    content: counter(postulat);
+.postulat:hover {
+    border-color: var(--leaf-green);
+    box-shadow: var(--senka);
+}
+
+.postulat-znak {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--light-bg-green);
+    color: var(--dark-green);
+}
+
+.postulat-znak svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.postulat:hover .postulat-znak { background: var(--leaf-green); color: var(--white); }
+
+.postulat-broj {
+    position: absolute;
+    right: 12px;
+    bottom: -12px;
     font-family: 'Roboto Slab', Georgia, serif;
-    font-size: 1.5rem;
+    font-size: 3.6rem;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 14px;
     color: var(--leaf-green);
-    opacity: 1;
+    opacity: 0.22;
+    pointer-events: none;
 }
+
+.postulat p {
+    margin: 0;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--dark-green);
+}
+
+/* Skup crteza (SVG <symbol>) koji se ne prikazuje sam, samo kroz <use> */
+.skriveno { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 /* Veza ka snimku akcije - ne vuce nista sa Jutjuba, samo vodi na njega */
 .video-veza {
@@ -1018,6 +1283,15 @@ footer {
 
     .site-logo { height: 64px; }
     .znak { height: 40px; }
+    .site-logo { --visina-malo: 44px; }
+    .znak { --visina-malo: 28px; }
+    :root { --visina-menija: 80px; }
+
+    /* Otvoren meni na niskom ekranu ne sme da pobegne ispod donje ivice */
+    .meni-prekidac:checked ~ .nav-links {
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+    }
 
     .meni-dugme {
         display: block;

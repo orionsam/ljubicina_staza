@@ -1,7 +1,7 @@
 [
  { "link": "/",           "naziv": "Почетна" },
  { "link": "/o-stazi/",   "naziv": "О стази" },
- { "link": "/o-ljubici/", "naziv": "O Љубици" },
+ { "link": "/o-ljubici/", "naziv": "О Љубици" },
  { "link": "/flora/",     "naziv": "Флора" },
  { "link": "/fauna/",     "naziv": "Фауна" },
  { "link": "/vujan/",     "naziv": "Вујан" },

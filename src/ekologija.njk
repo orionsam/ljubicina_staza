@@ -34,11 +34,34 @@ opis: Екологија на Љубичиној стази — дванаест
         {% if postulati.length %}
         <section id="postulati" class="plant-card">
             <h2>Дванаест постулата екологије</h2>
-            <ul class="poruke-mreza postulati">
+            {# Crtezi za postulate - jednom nacrtani ovde, a svaki postulat ih
+               poziva po imenu iz postulati.json ("ikona"). Boju uzimaju iz CSS-a. #}
+            <svg class="skriveno" aria-hidden="true">
+                <symbol id="ik-klica" viewBox="0 0 24 24"><path d="M12 20v-8"/><path d="M12 12c0-4-3-6.5-7-6.5 0 4 3 6.5 7 6.5z"/><path d="M12 10c0-3 2.5-5.5 6.5-5.5 0 3-2.5 5.5-6.5 5.5z"/><path d="M4 20h16"/></symbol>
+                <symbol id="ik-planeta" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol>
+                <symbol id="ik-vazduh" viewBox="0 0 24 24"><path d="M3 8h10a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h7a2 2 0 1 1-2 2"/></symbol>
+                <symbol id="ik-voda" viewBox="0 0 24 24"><path d="M12 3s-6.5 7.5-6.5 11.5a6.5 6.5 0 0 0 13 0C18.5 10.5 12 3 12 3z"/><path d="M9 15a3 3 0 0 0 3 3"/></symbol>
+                <symbol id="ik-um" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/><path d="M12 13v-3"/><path d="M12 10c0-1.5 1-2.5 2.5-2.5 0 1.5-1 2.5-2.5 2.5z"/></symbol>
+                <symbol id="ik-drvo" viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5 4 4 0 0 0 1 7.5h8A4 4 0 0 0 17 8a5 5 0 0 0-5-5z"/><path d="M12 21v-8"/><path d="M12 16l-2.5-2"/><path d="M8 21h8"/></symbol>
+                <symbol id="ik-ptice" viewBox="0 0 24 24"><path d="M2 11c3-3 6.5-2.5 10 7 3.5-9.5 7-10 10-7"/><path d="M3 4.5c1.3-1.4 2.8-1 4 1.5 1.2-2.5 2.7-2.9 4-1.5"/></symbol>
+                <symbol id="ik-cena" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8-10-10z"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M11 16c0-2.5 1.8-4.2 4.2-4.2 0 2.5-1.8 4.2-4.2 4.2z"/></symbol>
+                <symbol id="ik-vaga" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M5 7h14"/><path d="M5 7l-3 6.5a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6.5a3 3 0 0 0 6 0z"/></symbol>
+                <symbol id="ik-otpad" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4"/><path d="M20 12a8 8 0 0 1-14 5.3"/><path d="M6 21v-4h4"/></symbol>
+                <symbol id="ik-kuca" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 17.5c0-3 2-5 5-5 0 3-2 5-5 5z"/></symbol>
+                <symbol id="ik-srce" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.1 4.1 0 0 1 12 7.4a4.1 4.1 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/><path d="M12 16v-4"/><path d="M12 12.5c0-1.7 1.2-2.9 2.9-2.9 0 1.7-1.2 2.9-2.9 2.9z"/></symbol>
+            </svg>
+
+            <ol class="postulati">
                 {% for postulat in postulati %}
-                <li class="poruka postulat">{{ postulat.tekst }}</li>
+                <li class="postulat">
+                    <span class="postulat-znak" aria-hidden="true">
+                        <svg><use href="#ik-{{ postulat.ikona }}"></use></svg>
+                    </span>
+                    <span class="postulat-broj" aria-hidden="true">{{ loop.index }}</span>
+                    <p>{{ postulat.tekst }}</p>
+                </li>
                 {% endfor %}
-            </ul>
+            </ol>
         </section>
         {% endif %}
 
@@ -47,6 +70,12 @@ opis: Екологија на Љубичиној стази — дванаест
             <h2>Чишћење луњевачке реке</h2>
             <p>Прво чишћење луњевачке реке покренула је Љубица. Акција је окупила мештане и
             пријатеље, а снимак је забележен и објављен на Јутјубу.</p>
+
+            <figure class="zivotopis-slika uspravna">
+                <img src="/images/ljubica-ciscenje-reke.jpeg"
+                     alt="Љубица са пуном врећом сакупљеног смећа, подигнутог палца">
+                <figcaption>Љубица на чишћењу луњевачке реке.</figcaption>
+            </figure>
 
             <a class="video-veza" href="https://www.youtube.com/watch?v=Z31ThD_37CA"
                target="_blank" rel="noopener">
