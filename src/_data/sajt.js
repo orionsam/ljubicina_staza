@@ -1,5 +1,5 @@
 module.exports = {
-    naslov: "Љубицина стаза",
+    naslov: "Љубичина стаза",
     opis: "Едукативна стаза на планини Вујан — флора, фауна, историја и природа Вујна, уз табле постављене дуж стазе.",
 
     // Adresu sajta Netlify sam prosledi pri izgradnji, pa je ne treba upisivati
