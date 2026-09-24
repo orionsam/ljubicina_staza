@@ -1,7 +1,7 @@
 ---
 layout: layout.njk
 title: Екологија
-opis: Екологија на Љубициној стази — десет постулата и акције чишћења луњевачке реке.
+opis: Екологија на Љубичиној стази — дванаест постулата и акције чишћења луњевачке реке.
 ---
 
 <div class="flora-layout">
@@ -10,7 +10,7 @@ opis: Екологија на Љубициној стази — десет по�
             <h3>Каталог</h3>
             <ul>
                 <li><a href="#zasto">Зашто екологија</a></li>
-                {% if postulati.length %}<li><a href="#postulati">Десет постулата</a></li>{% endif %}
+                {% if postulati.length %}<li><a href="#postulati">Дванаест постулата</a></li>{% endif %}
                 <li><a href="#reka">Чишћење реке</a></li>
             </ul>
         </nav>
@@ -33,7 +33,7 @@ opis: Екологија на Љубициној стази — десет по�
 
         {% if postulati.length %}
         <section id="postulati" class="plant-card">
-            <h2>Десет постулата екологије</h2>
+            <h2>Дванаест постулата екологије</h2>
             <ul class="poruke-mreza postulati">
                 {% for postulat in postulati %}
                 <li class="poruka postulat">{{ postulat.tekst }}</li>

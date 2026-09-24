@@ -226,6 +226,39 @@ main a:hover { color: var(--dark-green); }
     border-radius: var(--radius);
 }
 
+/* Odeljci pri dnu pocetne (put, Ljubica, sta vas ceka) - svaki u svojoj
+   blagoj kartici, da se odvoje od uvodnog teksta i jedan od drugog */
+.home-odeljak {
+    margin-top: 30px;
+    padding: 26px 30px;
+    background: var(--light-bg-green);
+    border-radius: var(--radius);
+}
+
+.home-odeljak h2 { margin-top: 0; }
+.home-odeljak > :last-child { margin-bottom: 0; }
+
+/* Odeljak o Ljubici je licniji - centriran, bez dugmadi i brojki */
+.home-ljubica {
+    text-align: center;
+    border-top: 4px solid var(--leaf-green);
+}
+
+.home-ljubica p:not(.zivotopis-moto) {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Kratak spisak na pocetnoj koji vodi na ostale stranice */
+.home-linkovi {
+    margin: 12px 0 0;
+    padding-left: 20px;
+}
+
+.home-linkovi li { margin-bottom: 8px; }
+.home-linkovi li::marker { color: var(--leaf-green); }
+
 /* 7. STRANICE SA BOCNIM KATALOGOM --------------------------------------- */
 .flora-layout {
     display: flex;
@@ -868,7 +901,7 @@ footer {
 
 /* 13. EKOLOGIJA ---------------------------------------------------------- */
 /* Postulati nose izgled Ljubicinih poruka, samo umesto navodnika stoji redni
-   broj - da se vidi da je to niz od deset, a ne nasumicne izreke. */
+   broj - da se vidi da je to niz od dvanaest, a ne nasumicne izreke. */
 .postulati { counter-reset: postulat; }
 
 .postulat { counter-increment: postulat; }
@@ -1024,6 +1057,7 @@ footer {
 
     main { padding: 25px 0; }
     .home-text { padding: 22px; }
+    .home-odeljak { padding: 20px 18px; }
     .plant-card { padding: 20px; }
     .plant-card > img,
     .plant-card > picture > img { max-height: 320px; }
