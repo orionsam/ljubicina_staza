@@ -17,3 +17,5 @@ src/_includes/css
 _site/
 # Lokalna podesavanja alata, ne ticu se sajta
 .claude/
+# Priprema za stampu tabli (.ai, PDF, .psd) - stotine MB, ne ide u git
+*_Folder/

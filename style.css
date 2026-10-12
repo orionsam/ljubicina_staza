@@ -152,7 +152,7 @@ main a:hover { color: var(--dark-green); }
         animation-range: 0 150px;
     }
     .site-logo { --visina-malo: 52px; }
-    .znak { --visina-malo: 34px; }
+    .znak { --visina-malo: 37px; }
     :root { --visina-menija: 90px; }
 }
 
@@ -180,7 +180,7 @@ main a:hover { color: var(--dark-green); }
    Boje se zadaju promenljivama, pa isti znak radi i na tamnoj i na svetloj
    podlozi. Na tamnozelenoj traci "STAZA" je bela, kao na tablama. */
 .znak {
-    height: 62px;
+    height: 67px;
     width: auto;
     display: block;
     --znak-ime: #a8c08c;
@@ -1282,9 +1282,9 @@ footer {
     .nav-flex { position: relative; }
 
     .site-logo { height: 64px; }
-    .znak { height: 40px; }
+    .znak { height: 43px; }
     .site-logo { --visina-malo: 44px; }
-    .znak { --visina-malo: 28px; }
+    .znak { --visina-malo: 30px; }
     :root { --visina-menija: 80px; }
 
     /* Otvoren meni na niskom ekranu ne sme da pobegne ispod donje ivice */

@@ -14,9 +14,16 @@ const podaci = require("../../podaci/staza.json");
 // tacna. Dok ga nema, racuna se kroz tacke sa mape, sto secka krivine i daje
 // manju duzinu od stvarne. Zato `procena` ostaje true i sajt to otvoreno kaze.
 const trag = podaci.trag && podaci.trag.length ? podaci.trag : null;
-const linija = trag
+const linija = (trag
     ? trag.map(([lat, lon, visina]) => ({ lat, lon, visina }))
-    : podaci.tacke;
+    : podaci.tacke
+).map((t) => ({ ...t }));
+
+// Visina pocetka staze se navodi kao 450 m, a ne kako je procenio model
+// terena (oko 460 m). Upisuje se u prvu tacku linije, pa se odatle isprave
+// i opseg visina, visinska razlika, uspon i profil - sve ostaje uskladjeno.
+const VISINA_POCETKA = 450;
+linija[0].visina = VISINA_POCETKA;
 
 /** Rastojanje izmedju dve tacke po povrsini Zemlje, u metrima. */
 function rastojanje(a, b) {
