@@ -734,6 +734,11 @@ footer {
     margin-bottom: 0;
 }
 
+.zivotopis-priredile {
+    margin-top: 28px;
+    text-align: center;
+}
+
 /* Uvod sekcije (tekst + slika) unutar kartice ne treba razmak kao izmedju
    dve odvojene sekcije */
 .plant-card > .flex-row { margin-bottom: 30px; }
